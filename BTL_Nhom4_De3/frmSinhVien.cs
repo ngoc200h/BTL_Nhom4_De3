@@ -97,16 +97,6 @@ namespace BTL_Nhom4_De3
 
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
-            //button btnLuu sẽ xử lý 1 trong 2 tình huống
-            //trường hợp 1: nếu mã sinh viên không có giá trị -> thêm mới sinh viên
-            //trường hợp 2: nếu mã sinh viên có giá trị -> cập nhật thông tin sinh viên
-
-            /*ý tưởng
-                -- cho dù thêm mới hay cập nhật
-                -- thì đều cần các giá trị như: họ, tên đệm, tên, ngày sinh, giới tính
-                    quê quán, địa chỉ, điện thoại, email => các giá trị này dùng cho cả 2 trường hợp
-                -- riêng cập nhật sinh viên, cần quan tâm tới mã sinh viên        
-            */
 
             string sql = "";
             string ten = txtTenSV.Text;
@@ -118,28 +108,23 @@ namespace BTL_Nhom4_De3
             catch (Exception)
             {
                 MessageBox.Show("Ngày sinh không hợp lệ");
-                mtbNgaySinh.Select();//trỏ chuột về mtbNgaysinh
-                return;//không thực hiện các câu lệnh phía dưới
+                mtbNgaySinh.Select();
+                return;
             }
-            //vì ngày sinh ở masketbox, chúng ta set theo dạng dd/mm/yyy
-            //nhưng trong csdl lại lưu dưới dạng yyyy-mm-dd
-            //=> chúng ta cần chuyển từ dd/mm/yyyy sang yyyy-mm-dd
 
 
-            string gioitinh = rbtNam.Checked ? "1" : "0";//đây là toán tử 2 ngôi
-            //nếu radiobutton Nam đc check thì chọn giá trị 1
-            //ngược lại chọn giá trị 0 -> phù hợp với giá trị đã được lưu ở csdl
+            string gioitinh = rbtNam.Checked ? "1" : "0";
 
-            //khai báo một danh sách tham sô = class CustomParameter -> đã được khai báo ở part 3
+
             List<CustomParameter> lstPara = new List<CustomParameter>();
-            if (string.IsNullOrEmpty(msv))//nếu thêm mới sinh viên
+            if (string.IsNullOrEmpty(msv))
             {
-                sql = "ThemMoiSV";//gọi tới procedure thêm mới sinh viên
+                sql = "ThemMoiSV";
 
             }
-            else//nếu cập nhật sinh viên
+            else
             {
-                sql = "updateSV";//gọi tới procedure cập nhật sinh viên
+                sql = "updateSV";//procedure cập nhật sinh viên
                 lstPara.Add(new CustomParameter()
                 {
                     key = "@masinhvien",
@@ -163,9 +148,8 @@ namespace BTL_Nhom4_De3
                 value = gioitinh
             });
 
-            var rs = new Database().ExeCute(sql, lstPara);//truyền 2 tham số là câu lệnh sql
-            //và danh sách các tham số
-            if (rs == 1)//nếu thuwcjt hi thành công
+            var rs = new Database().ExeCute(sql, lstPara);
+            if (rs == 1)//nếu thực thi thành công
             {
                 if (string.IsNullOrEmpty(msv))//nếu thêm mới
                 {
@@ -175,7 +159,7 @@ namespace BTL_Nhom4_De3
                 {
                     MessageBox.Show("Cập nhật thông tin sinh viên thành công");
                 }
-                this.Dispose();//đóng form sau khi thêm mới/cập nhật thành công
+                this.Dispose();
             }
             else//nếu không thành công
             {

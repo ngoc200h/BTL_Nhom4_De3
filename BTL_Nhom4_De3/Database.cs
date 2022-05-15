@@ -22,6 +22,8 @@ namespace BTL_Nhom4_De3
         //    throw new NotImplementedException();
         //}
 
+        //Kết nối
+
         private SqlConnection conn;
         private string sql;
         private DataTable dt;
@@ -90,9 +92,6 @@ namespace BTL_Nhom4_De3
             {
                 try
                 {
-                    //cần sửa lại hàm execute như sau
-                    //string sql,List<CustomParameter> lstPara là tham số truyền vào 
-                    //CustomParameter đã được định nghĩa ở phần trước- Xem lại part 3
                     conn.Open();//mở kết nối
                     cmd = new SqlCommand(sql, conn);//thực thi câu lệnh sql
                     cmd.CommandType = CommandType.StoredProcedure;
