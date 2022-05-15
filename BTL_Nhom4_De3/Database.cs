@@ -71,11 +71,11 @@ namespace BTL_Nhom4_De3
             {
                 try
                 {
-                    conn.Open();//mở kết nối
-                    cmd = new SqlCommand(sql, conn);//truyền giá trị vào cmd
+                    conn.Open();
+                    cmd = new SqlCommand(sql, conn);
                     dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());//thực thi câu lệnh
-                    return dt.Rows[0];//trả về kết quả
+                    dt.Load(cmd.ExecuteReader());
+                    return dt.Rows[0];
                 }
                 catch (Exception ex)
                 {
@@ -92,15 +92,18 @@ namespace BTL_Nhom4_De3
             {
                 try
                 {
+                    //cần sửa lại hàm execute như sau
+                    //string sql,List<CustomParameter> lstPara là tham số truyền vào 
+                    //CustomParameter đã được định nghĩa ở phần trước- Xem lại part 3
                     conn.Open();//mở kết nối
                     cmd = new SqlCommand(sql, conn);//thực thi câu lệnh sql
                     cmd.CommandType = CommandType.StoredProcedure;
-                    foreach (var p in lstPara)//gán các tham số cho cmd
+                    foreach (var p in lstPara)
                     {
                         cmd.Parameters.AddWithValue(p.key, p.value);
                     }
-                    var rs = cmd.ExecuteNonQuery();//lấy kết quả thực thi truy vấn
-                    return (int)rs;//trả về kết quả
+                    var rs = cmd.ExecuteNonQuery();
+                    return (int)rs;
                 }
                 catch (Exception ex)
                 {
@@ -109,7 +112,7 @@ namespace BTL_Nhom4_De3
                 }
                 finally
                 {
-                    conn.Close();//cuối cùng đóng kết nối
+                    conn.Close();
                 }
 
 
