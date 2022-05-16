@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BTL_Nhom4_De3
+{
+    public partial class Form1 : Form
+    {
+
+        private SqlConnection conn;
+        private string sql;
+        private DataTable dt;
+        private SqlCommand cmd;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        //Lệnh insert 1000 dòng vào database
+        private void insertMultirow_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+            try
+            {
+                for (i = 1; i <= 1000; i++)
+                {
+                    string sql = "insert into chatlieu ('" + i.ToString() + "', N'Bong gon loai')";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("insert dl thanh cong");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("loi" + ex.ToString());
+            }
+        }
+    }
+}
