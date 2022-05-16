@@ -32,6 +32,7 @@ namespace BTL_Nhom4_De3
                 value = tukhoa
             }
                                             );
+
             //dgvSinhVien.DataSource = new Database().SelectData("SelectAllSinhVien", lstPara);
             dgvSinhVien.DataSource = new Database().SinhVien();
             //SinhVien (MaSV, TenSV, MaKhoa, MaLop, NgSinh, GTinh, MaQue, MaDToc, MaCN, MaHeDT, MaChucVu)
@@ -64,11 +65,17 @@ namespace BTL_Nhom4_De3
             LoadDSSV();
         }
 
-        private void btnTimkiem_Click(object sender, EventArgs e)
+        private void btnTimKiem_Click_1(object sender, EventArgs e)
         {
-            tukhoa = txtTuKhoa.Text;
-            LoadDSSV();
+            try
+            {
+                tukhoa = txtTuKhoa.Text;
+                LoadDSSV();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hổng có tìm thấy~");
+            }
         }
-
     }
 }

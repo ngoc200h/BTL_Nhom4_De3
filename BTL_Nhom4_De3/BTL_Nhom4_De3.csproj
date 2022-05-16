@@ -46,11 +46,77 @@
   <ItemGroup>
     <Compile Include="CustomParameter.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="frmDSChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSChucVu.Designer.cs">
+      <DependentUpon>frmDSChucVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSChuyenNganh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSChuyenNganh.Designer.cs">
+      <DependentUpon>frmDSChuyenNganh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSDanToc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSDanToc.Designer.cs">
+      <DependentUpon>frmDSDanToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSDiem.Designer.cs">
+      <DependentUpon>frmDSDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSHeDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSHeDT.Designer.cs">
+      <DependentUpon>frmDSHeDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSKhoa.Designer.cs">
+      <DependentUpon>frmDSKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSLop.Designer.cs">
+      <DependentUpon>frmDSLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSMon.Designer.cs">
+      <DependentUpon>frmDSMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSPhongHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSPhongHoc.Designer.cs">
+      <DependentUpon>frmDSPhongHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSQue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSQue.Designer.cs">
+      <DependentUpon>frmDSQue.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDSSV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDSSV.Designer.cs">
       <DependentUpon>frmDSSV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSTKB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSTKB.Designer.cs">
+      <DependentUpon>frmDSTKB.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -67,8 +133,41 @@
     <Compile Include="Functions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDSChucVu.resx">
+      <DependentUpon>frmDSChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSChuyenNganh.resx">
+      <DependentUpon>frmDSChuyenNganh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSDanToc.resx">
+      <DependentUpon>frmDSDanToc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSDiem.resx">
+      <DependentUpon>frmDSDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSHeDT.resx">
+      <DependentUpon>frmDSHeDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSKhoa.resx">
+      <DependentUpon>frmDSKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSLop.resx">
+      <DependentUpon>frmDSLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSMon.resx">
+      <DependentUpon>frmDSMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSPhongHoc.resx">
+      <DependentUpon>frmDSPhongHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSQue.resx">
+      <DependentUpon>frmDSQue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDSSV.resx">
       <DependentUpon>frmDSSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSTKB.resx">
+      <DependentUpon>frmDSTKB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

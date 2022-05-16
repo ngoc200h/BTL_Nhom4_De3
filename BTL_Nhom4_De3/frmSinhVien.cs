@@ -124,7 +124,7 @@ namespace BTL_Nhom4_De3
             }
             else
             {
-                sql = "updateSV";//procedure cập nhật sinh viên
+                sql = "updateSV";//procedure cập nhật sinh viên trong csdl
                 lstPara.Add(new CustomParameter()
                 {
                     key = "@masinhvien",
