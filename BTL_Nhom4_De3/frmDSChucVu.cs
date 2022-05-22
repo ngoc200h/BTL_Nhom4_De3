@@ -96,9 +96,7 @@ namespace BTL_Nhom4_De3
             {
                 MessageBox.Show("Đã tồn tại mã chức vụ hoặc điền thiếu", "Úi có lỗi");
             }
-            string sql1 = "select * from ChucVu";
-            dgvChucVu.DataSource = dt.TaoBang(sql1);
-            //LoadDMChatLieu();
+            LoadDSChucVu();
         }
     }
 }
