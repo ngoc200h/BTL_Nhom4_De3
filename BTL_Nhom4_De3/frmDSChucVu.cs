@@ -94,7 +94,7 @@ namespace BTL_Nhom4_De3
             }
             catch
             {
-                MessageBox.Show("Đã tồn tại mã chức vụ hoặc điền thiếu", "Úi có lỗi");
+                MessageBox.Show("Đã tồn tại dữ liệu hoặc điền thiếu/điền sai", "Úi có lỗi");
             }
             LoadDSChucVu();
         }
