@@ -248,7 +248,7 @@ namespace BTL_Nhom4_De3
             this.btnLuu.TabIndex = 23;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_1);
+           //this.btnLuu.Click += new System.EventHandler(this.//btnLuu_Click_1);
             // 
             // btnHuy
             // 
