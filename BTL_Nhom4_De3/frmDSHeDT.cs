@@ -36,5 +36,6 @@ namespace BTL_Nhom4_De3
             dgvHeDT.Columns["MaHeDT"].HeaderText = "Mã Hệ Đào Tạo";
             dgvHeDT.Columns["TenHeDT"].HeaderText = "Tên Hệ Đào Tạo";
         }
+        //
     }
 }
