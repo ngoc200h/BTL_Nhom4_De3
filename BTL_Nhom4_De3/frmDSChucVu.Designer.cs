@@ -100,7 +100,7 @@ namespace BTL_Nhom4_De3
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 34);
+            this.label1.Location = new System.Drawing.Point(160, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 31;
@@ -109,7 +109,7 @@ namespace BTL_Nhom4_De3
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(164, 69);
+            this.label2.Location = new System.Drawing.Point(160, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 32;
