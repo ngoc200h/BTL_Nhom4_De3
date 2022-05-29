@@ -38,19 +38,20 @@ namespace BTL_Nhom4_De3
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDT = new System.Windows.Forms.DataGridView();
+            this.btnBoQua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDT)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTenDT
             // 
-            this.txtTenDT.Location = new System.Drawing.Point(321, 62);
+            this.txtTenDT.Location = new System.Drawing.Point(465, 59);
             this.txtTenDT.Name = "txtTenDT";
             this.txtTenDT.Size = new System.Drawing.Size(100, 20);
             this.txtTenDT.TabIndex = 50;
             // 
             // txtMaDT
             // 
-            this.txtMaDT.Location = new System.Drawing.Point(321, 27);
+            this.txtMaDT.Location = new System.Drawing.Point(215, 59);
             this.txtMaDT.Name = "txtMaDT";
             this.txtMaDT.Size = new System.Drawing.Size(100, 20);
             this.txtMaDT.TabIndex = 49;
@@ -58,7 +59,7 @@ namespace BTL_Nhom4_De3
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(245, 65);
+            this.label2.Location = new System.Drawing.Point(389, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 48;
@@ -67,7 +68,7 @@ namespace BTL_Nhom4_De3
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(245, 30);
+            this.label1.Location = new System.Drawing.Point(139, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 47;
@@ -75,7 +76,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(493, 104);
+            this.btnLuu.Location = new System.Drawing.Point(438, 122);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 46;
@@ -85,7 +86,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(375, 104);
+            this.btnSua.Location = new System.Drawing.Point(320, 122);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 45;
@@ -95,7 +96,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(243, 104);
+            this.btnXoa.Location = new System.Drawing.Point(188, 122);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 44;
@@ -105,7 +106,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(124, 104);
+            this.btnThem.Location = new System.Drawing.Point(69, 122);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 43;
@@ -124,11 +125,22 @@ namespace BTL_Nhom4_De3
             this.dgvDT.TabIndex = 51;
             this.dgvDT.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDT_CellClick);
             // 
+            // btnBoQua
+            // 
+            this.btnBoQua.Location = new System.Drawing.Point(560, 122);
+            this.btnBoQua.Name = "btnBoQua";
+            this.btnBoQua.Size = new System.Drawing.Size(75, 23);
+            this.btnBoQua.TabIndex = 52;
+            this.btnBoQua.Text = "Bỏ Qua";
+            this.btnBoQua.UseVisualStyleBackColor = true;
+            this.btnBoQua.Click += new System.EventHandler(this.btnBoQua_Click);
+            // 
             // frmDSDanToc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 351);
+            this.Controls.Add(this.btnBoQua);
             this.Controls.Add(this.dgvDT);
             this.Controls.Add(this.txtTenDT);
             this.Controls.Add(this.txtMaDT);
@@ -158,5 +170,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDT;
+        private System.Windows.Forms.Button btnBoQua;
     }
 }

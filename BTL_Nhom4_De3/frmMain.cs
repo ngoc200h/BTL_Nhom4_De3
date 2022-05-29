@@ -19,8 +19,7 @@ namespace BTL_Nhom4_De3
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //frmDSSV f = new frmDSSV();
-            //f.Show();
+            Database.Connect();
         }
 
         private void AddForm(Form f)
@@ -73,6 +72,7 @@ namespace BTL_Nhom4_De3
         private void queQuanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDSQue f = new frmDSQue();
+            f.StartPosition = FormStartPosition.CenterScreen;
             AddForm(f);
         }
 

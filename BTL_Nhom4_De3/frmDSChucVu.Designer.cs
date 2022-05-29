@@ -38,6 +38,7 @@ namespace BTL_Nhom4_De3
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaChucVu = new System.Windows.Forms.TextBox();
             this.txtTenChucVu = new System.Windows.Forms.TextBox();
+            this.btnBoQua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChucVu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +96,7 @@ namespace BTL_Nhom4_De3
             this.btnLuu.TabIndex = 30;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_1);
             // 
             // label1
             // 
@@ -129,11 +130,22 @@ namespace BTL_Nhom4_De3
             this.txtTenChucVu.Size = new System.Drawing.Size(100, 20);
             this.txtTenChucVu.TabIndex = 34;
             // 
+            // btnBoQua
+            // 
+            this.btnBoQua.Location = new System.Drawing.Point(408, 47);
+            this.btnBoQua.Name = "btnBoQua";
+            this.btnBoQua.Size = new System.Drawing.Size(75, 23);
+            this.btnBoQua.TabIndex = 35;
+            this.btnBoQua.Text = "Bỏ Qua";
+            this.btnBoQua.UseVisualStyleBackColor = true;
+            this.btnBoQua.Click += new System.EventHandler(this.btnBoQua_Click);
+            // 
             // frmDSChucVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 349);
+            this.Controls.Add(this.btnBoQua);
             this.Controls.Add(this.txtTenChucVu);
             this.Controls.Add(this.txtMaChucVu);
             this.Controls.Add(this.label2);
@@ -163,5 +175,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaChucVu;
         private System.Windows.Forms.TextBox txtTenChucVu;
+        private System.Windows.Forms.Button btnBoQua;
     }
 }

@@ -11,6 +11,7 @@ namespace BTL_Nhom4_De3
 {
     public partial class frmDSChucVu : Form
     {
+        DataTable tblCV;
         public frmDSChucVu()
         {
             InitializeComponent();
@@ -18,19 +19,23 @@ namespace BTL_Nhom4_De3
 
         private void frmDSChucVu_Load(object sender, EventArgs e)
         {
+            txtMaChucVu.Enabled = false;
+            btnLuu.Enabled = false;
+            btnBoQua.Enabled = false;
             LoadDSChucVu();
         }
 
-        Database dt = new Database();
-        private void Reset()
+        private void ResetValues()
         {
             txtMaChucVu.Text = "";
             txtTenChucVu.Text = "";
         }
         private void LoadDSChucVu()
         {
-            string sql1 = "select * from ChucVu";
-            dgvChucVu.DataSource = dt.TaoBang(sql1);
+            string sql;
+            sql = "select * from ChucVu";
+            tblCV = Database.LoadDataToTable(sql);
+            dgvChucVu.DataSource = tblCV;
             //ChucVu(MaChucVu, TenChucVu)
             dgvChucVu.Columns["MaChucVu"].HeaderText = "Mã Chức Vụ";
             dgvChucVu.Columns["TenChucVu"].HeaderText = "Tên Chức Vụ";
@@ -46,57 +51,110 @@ namespace BTL_Nhom4_De3
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            Reset();
+            ResetValues();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnBoQua.Enabled = true;
             btnLuu.Enabled = true;
-
+            btnThem.Enabled = false;
             txtMaChucVu.Enabled = true;
             txtMaChucVu.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa  " + txtMaChucVu.Text
-                    + " không? Nếu có ấn nút Lưu, không thì ấn nút Hủy", "Xóa sản phẩm",
-                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string sql;
+            if (tblCV.Rows.Count == 0)
             {
-                try
-                {
-                    string sql = "delete from ChucVu where MaChucVu='" + txtMaChucVu.Text + "'";
-                    dt.ExcuteNonQuery(sql);
-                    string sql1 = "select * from ChucVu";
-                    dgvChucVu.DataSource = dt.TaoBang(sql1);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Xóa ko nổi.. " + ex.ToString());
-                }
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaChucVu.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                sql = "DELETE ChucVu WHERE MaChucVu=N'" + txtMaChucVu.Text + "'";
+                Database.RunSqlDel(sql);
+                LoadDSChucVu();
+                ResetValues();
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string sql = "update ChucVu set TenChucVu='" + txtTenChucVu.Text + "' where MaChucVu='" + txtMaChucVu.Text + "'";
-            dt.ExcuteNonQuery(sql);
+            string sql;
+            if (tblCV.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaChucVu.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtTenChucVu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập tên chức vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenChucVu.Focus();
+                return;
+            }
+            sql = "UPDATE ChucVu SET TenChucVu=N'" + txtTenChucVu.Text.ToString() + "' WHERE MaChucVu=N'" + txtMaChucVu.Text + "'";
+            Database.RunSql(sql);
             LoadDSChucVu();
+            ResetValues();
+            btnBoQua.Enabled = false;
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void btnLuu_Click_1(object sender, EventArgs e)
         {
-            string sql = "insert into ChucVu values('" + txtMaChucVu.Text + "','" + txtTenChucVu.Text + "')";
-            try
+            string sql;
+            //check dữ liệu ko dc để trống
+            if (txtMaChucVu.Text.Trim() == "")
             {
-                dt.ExcuteNonQuery(sql);
-                btnLuu.Enabled = false;
-                btnXoa.Enabled = true;
-                btnSua.Enabled = true;
+                MessageBox.Show("Mã chức vụ ko đc để trống!");
+                txtMaChucVu.Focus();
+                return;
             }
-            catch
+            if (txtTenChucVu.Text.Trim() == "")
             {
-                MessageBox.Show("Đã tồn tại dữ liệu hoặc điền thiếu/điền sai", "Úi có lỗi");
+                MessageBox.Show("Tên chức vụ ko đc để trống!");
+                txtTenChucVu.Focus();
+                return;
             }
+            sql = "SELECT MaChucVu FROM ChucVu WHERE MaChucVu=N'" +
+            txtMaChucVu.Text.Trim() + "'";
+            if (Database.CheckKey(sql))
+            {
+                MessageBox.Show("Mã chức vụ này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaChucVu.Focus();
+                txtMaChucVu.Text = "";
+                return;
+            }
+            sql = "INSERT INTO ChucVu(MaChucVu, TenChucVu) VALUES(N'" + txtMaChucVu.Text + "',N'" + txtTenChucVu.Text + "')";
+            Database.RunSql(sql);
             LoadDSChucVu();
+            ResetValues();
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnBoQua.Enabled = false;
+            btnLuu.Enabled = false;
+            txtMaChucVu.Enabled = false;
+        }
+
+        private void btnBoQua_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+            btnBoQua.Enabled = false;
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnLuu.Enabled = false;
+            txtMaChucVu.Enabled = false;
         }
     }
 }

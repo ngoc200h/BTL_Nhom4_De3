@@ -38,6 +38,7 @@ namespace BTL_Nhom4_De3
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.btnBoQua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHeDT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(450, 100);
+            this.btnLuu.Location = new System.Drawing.Point(409, 100);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 38;
@@ -101,7 +102,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(332, 100);
+            this.btnSua.Location = new System.Drawing.Point(291, 100);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 37;
@@ -111,7 +112,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(200, 100);
+            this.btnXoa.Location = new System.Drawing.Point(159, 100);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 36;
@@ -121,7 +122,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(81, 100);
+            this.btnThem.Location = new System.Drawing.Point(40, 100);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 35;
@@ -129,11 +130,22 @@ namespace BTL_Nhom4_De3
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // btnBoQua
+            // 
+            this.btnBoQua.Location = new System.Drawing.Point(519, 100);
+            this.btnBoQua.Name = "btnBoQua";
+            this.btnBoQua.Size = new System.Drawing.Size(75, 23);
+            this.btnBoQua.TabIndex = 53;
+            this.btnBoQua.Text = "Bỏ Qua";
+            this.btnBoQua.UseVisualStyleBackColor = true;
+            this.btnBoQua.Click += new System.EventHandler(this.btnBoQua_Click);
+            // 
             // frmDSHeDT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 352);
+            this.Controls.Add(this.btnBoQua);
             this.Controls.Add(this.txtTenHeDT);
             this.Controls.Add(this.txtMaHeDT);
             this.Controls.Add(this.label2);
@@ -162,5 +174,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnBoQua;
     }
 }

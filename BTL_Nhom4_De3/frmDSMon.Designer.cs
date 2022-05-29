@@ -40,6 +40,7 @@ namespace BTL_Nhom4_De3
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtDVHT = new System.Windows.Forms.TextBox();
+            this.btnBoQua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,12 +51,12 @@ namespace BTL_Nhom4_De3
             this.dgvMon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMon.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvMon.Location = new System.Drawing.Point(0, 166);
+            this.dgvMon.Location = new System.Drawing.Point(0, 181);
             this.dgvMon.MultiSelect = false;
             this.dgvMon.Name = "dgvMon";
             this.dgvMon.ReadOnly = true;
             this.dgvMon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMon.Size = new System.Drawing.Size(579, 172);
+            this.dgvMon.Size = new System.Drawing.Size(615, 172);
             this.dgvMon.TabIndex = 22;
             this.dgvMon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMon_CellClick);
             // 
@@ -102,7 +103,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(435, 120);
+            this.btnLuu.Location = new System.Drawing.Point(384, 136);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 48;
@@ -112,7 +113,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(317, 120);
+            this.btnSua.Location = new System.Drawing.Point(272, 136);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 47;
@@ -122,7 +123,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(185, 120);
+            this.btnXoa.Location = new System.Drawing.Point(160, 136);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 46;
@@ -132,7 +133,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(66, 120);
+            this.btnThem.Location = new System.Drawing.Point(53, 136);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 45;
@@ -147,11 +148,22 @@ namespace BTL_Nhom4_De3
             this.txtDVHT.Size = new System.Drawing.Size(100, 20);
             this.txtDVHT.TabIndex = 54;
             // 
+            // btnBoQua
+            // 
+            this.btnBoQua.Location = new System.Drawing.Point(493, 136);
+            this.btnBoQua.Name = "btnBoQua";
+            this.btnBoQua.Size = new System.Drawing.Size(75, 23);
+            this.btnBoQua.TabIndex = 81;
+            this.btnBoQua.Text = "Bỏ Qua";
+            this.btnBoQua.UseVisualStyleBackColor = true;
+            this.btnBoQua.Click += new System.EventHandler(this.btnBoQua_Click);
+            // 
             // frmDSMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 338);
+            this.ClientSize = new System.Drawing.Size(615, 353);
+            this.Controls.Add(this.btnBoQua);
             this.Controls.Add(this.txtDVHT);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTenMon);
@@ -184,5 +196,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtDVHT;
+        private System.Windows.Forms.Button btnBoQua;
     }
 }

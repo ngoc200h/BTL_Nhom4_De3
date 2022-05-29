@@ -11,145 +11,148 @@ using System.Windows.Forms;
 
 namespace BTL_Nhom4_De3
 {
-    public class Database
+    class Database
     {
-        private SqlConnection conn;
-        private string sql;
-        private DataTable dt;
-        private SqlCommand cmd;
+        //DAO - Functions
+        public static SqlConnection Conn;  //Khai báo đối tượng kết nối
+        public static string connString;   //Khai báo biến chứa chuỗi kết nối
 
-        public SqlConnection TaoKetNoi()
+        public static void Connect()
         {
-            return new SqlConnection("Data Source=NGOC9YO\\SQLEXPRESS;" +
-                                    "Initial Catalog=QuanLySinhVien;" +
-                                    "Integrated Security=True");
+            connString = "Data Source=NGOC9YO\\SQLEXPRESS;" +
+                                     "Initial Catalog = QuanLySinhVien;" +
+                                     "Integrated Security=True";
+            Conn = new SqlConnection();
+            Conn.ConnectionString = connString;
+
+            try
+            {
+                Conn.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
-        public DataTable TaoBang(string sql) //LoadDataTable
+
+        public static void Disconnect()
         {
-            SqlConnection con = TaoKetNoi();
-            SqlDataAdapter Myadapter = new SqlDataAdapter(sql, con);    // Khai báo
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();   	//Đóng kết nối
+                Conn.Dispose();     //Giải phóng tài nguyên
+                Conn = null;
+            }
+        }
+
+        public static DataTable LoadDataToTable(string sql) //LoadDataTable hoặc GetDataToTable
+        {
+            SqlDataAdapter Mydata = new SqlDataAdapter();	// Khai báo
+            // Tạo đối tượng Command thực hiện câu lệnh SELECT        
+            Mydata.SelectCommand = new SqlCommand();
+            Mydata.SelectCommand.Connection = Database.Conn; 	// Kết nối CSDL
+            Mydata.SelectCommand.CommandText = sql;	// Gán câu lệnh SELECT
             DataTable table = new DataTable();    // Khai báo DataTable nhận dữ liệu trả về
-            Myadapter.Fill(table);     //Thực hiện câu lệnh SELECT và đổ dữ liệu vào bảng table
+            Mydata.Fill(table);
+            //Thực hiện câu lệnh SELECT và đổ dữ liệu vào bảng table
             return table;
+
+        }
+        public static void FillDataToCombo(string sql, ComboBox cbo, string ma, string ten)
+        {
+            SqlDataAdapter Mydata = new SqlDataAdapter(sql, Conn);
+            DataTable table = new DataTable();
+            Mydata.Fill(table);
+            cbo.DataSource = table;
+            cbo.ValueMember = ma;    // Truong gia tri
+            cbo.DisplayMember = ten;    // Truong hien thi
         }
 
-        //public static bool CheckKey(string sql)
-        //{
-        //    SqlConnection con = TaoKetNoi();
-        //    SqlCommand myCommand = new SqlCommand(sql, con);
-        //    SqlDataReader myReader = myCommand.ExecuteReader();
-        //    if (myReader.HasRows)
-        //        return true;
-        //    else
-        //        return false;
-        //}
+        public static bool CheckKey(string sql)
+        {
+            SqlDataAdapter Mydata = new SqlDataAdapter(sql, Conn);
+            DataTable table = new DataTable();
+            Mydata.Fill(table);
+            if (table.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
 
         public void ExcuteNonQuery(string sql)
         {
-            SqlConnection con = TaoKetNoi();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            con.Open();
+            //SqlConnection con = TaoKetNoi();
+            SqlCommand cmd = new SqlCommand(sql, Conn);
+            //con.Open();
             cmd.ExecuteNonQuery();
-            con.Close();
+            //con.Close();
             cmd.Dispose();
         }
 
-        //dưới ko cần lắm
-        public DataTable Khoa()
+        public static void RunSql(string sql)
         {
-            string cmd = "select * from Khoa";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
+            SqlCommand cmd;		                // Khai báo đối tượng SqlCommand
+            cmd = new SqlCommand();	         // Khởi tạo đối tượng
+            cmd.Connection = Database.Conn;	  // Gán kết nối
+            cmd.CommandText = sql;			  // Gán câu lệnh SQL
+            try
+            {
+                cmd.ExecuteNonQuery();		  // Thực hiện câu lệnh SQL
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            cmd.Dispose();
+            cmd = null;
         }
-        public DataTable SinhVien()
+
+        public static void RunSqlDel(string sql)
         {
-            string cmd = "select * from Sinh_Vien";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Database.Conn;
+            cmd.CommandText = sql;
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Dữ liệu đang được dùng, không thể xóa...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            cmd.Dispose();
+            cmd = null;
         }
-        public DataTable Lop()
+        public static string GetFieldValues(string sql)
         {
-            string cmd = "select * from Lop";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
+            string ma = "";
+            SqlCommand cmd = new SqlCommand(sql, Database.Conn);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ma = reader.GetValue(0).ToString();
+            }
+            reader.Close();
+            return ma;
         }
-        public DataTable Mon()
+        public static bool IsDate(string d)
         {
-            string cmd = "select * from Mon";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
+            string[] parts = d.Split('/');
+            if ((Convert.ToInt32(parts[0]) >= 1) && (Convert.ToInt32(parts[0]) <= 31) &&
+(Convert.ToInt32(parts[1]) >= 1) && (Convert.ToInt32(parts[1]) <= 12) && (Convert.ToInt32(parts[2]) >= 1900))
+                return true;
+            else
+                return false;
         }
-        public DataTable ChucVu()
+        public static string ConvertDateTime(string d)
         {
-            string cmd = "select * from ChucVu";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
+            string[] parts = d.Split('/');
+            string dt = String.Format("{0}/{1}/{2}", parts[1], parts[0], parts[2]);
+            return dt;
         }
-        public DataTable Diem()
-        {
-            string cmd = "select * from Diem";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
-        public DataTable DanToc()
-        {
-            string cmd = "select * from DanToc";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
-        public DataTable ThoiKhoaBieu()
-        {
-            string cmd = "select * from ThoiKhoaBieu";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
-        public DataTable Chuyen_Nganh()
-        {
-            string cmd = "select * from Chuyen_Nganh";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
-        public DataTable HeDaoTao()
-        {
-            string cmd = "select * from HeDaoTao";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
-        public DataTable Que()
-        {
-            string cmd = "select * from Que";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
-        public DataTable Phong_Hoc()
-        {
-            string cmd = "select * from Phong_Hoc";
-            SqlDataAdapter adap = new SqlDataAdapter(cmd, conn);
-            DataTable ds = new DataTable();
-            adap.Fill(ds);
-            return ds;
-        }
+
     }
 }
+

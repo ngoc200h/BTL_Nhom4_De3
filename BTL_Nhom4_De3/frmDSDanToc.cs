@@ -11,27 +11,31 @@ namespace BTL_Nhom4_De3
 {
     public partial class frmDSDanToc : Form
     {
+        DataTable tblDT;
         public frmDSDanToc()
         {
             InitializeComponent();
         }
 
-
         private void frmDSDanToc_Load(object sender, EventArgs e)
         {
+            txtMaDT.Enabled = false;
+            btnLuu.Enabled = false;
+            btnBoQua.Enabled = false;
             LoadDSDT();
         }
 
-        Database dt = new Database();
-        private void Reset()
+        private void ResetValues()
         {
             txtMaDT.Text = "";
             txtTenDT.Text = "";
         }
         private void LoadDSDT()
         {
-            string sql1 = "select * from DanToc";
-            dgvDT.DataSource = dt.TaoBang(sql1);
+            string sql;
+            sql = "select * from DanToc";
+            tblDT = Database.LoadDataToTable(sql);
+            dgvDT.DataSource = tblDT; ;
             //DanToc (MaDToc, TenDToc)
             dgvDT.Columns["MaDToc"].HeaderText = "Mã Dân Tộc";
             dgvDT.Columns["TenDToc"].HeaderText = "Tên Dân Tộc";
@@ -47,57 +51,110 @@ namespace BTL_Nhom4_De3
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            Reset();
+            ResetValues();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnBoQua.Enabled = true;
             btnLuu.Enabled = true;
-
+            btnThem.Enabled = false;
             txtMaDT.Enabled = true;
             txtMaDT.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa  " + txtMaDT.Text
-                + " không? Nếu có ấn nút Lưu, không thì ấn nút Hủy", "Xóa sản phẩm",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string sql;
+            if (tblDT.Rows.Count == 0)
             {
-                try
-                {
-                    string sql = "delete from DanToc where MaDToc='" + txtMaDT.Text + "'";
-                    dt.ExcuteNonQuery(sql);
-                    string sql1 = "select * from DanToc";
-                    dgvDT.DataSource = dt.TaoBang(sql1);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Xóa ko nổi.. " + ex.ToString());
-                }
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaDT.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                sql = "DELETE DanToc WHERE MaDToc=N'" + txtMaDT.Text + "'";
+                Database.RunSqlDel(sql);
+                LoadDSDT();
+                ResetValues();
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string sql = "update DanToc set TenDToc='" + txtTenDT.Text + "' where MaDToc='" + txtMaDT.Text + "'";
-            dt.ExcuteNonQuery(sql);
+            string sql;
+            if (tblDT.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaDT.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtTenDT.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập tên dân tộc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenDT.Focus();
+                return;
+            }
+            sql = "UPDATE DanToc SET TenDToc=N'" + txtTenDT.Text.ToString() + "' WHERE MaDToc=N'" + txtMaDT.Text + "'";
+            Database.RunSql(sql);
             LoadDSDT();
+            ResetValues();
+            btnBoQua.Enabled = false;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql = "insert into DanToc values('" + txtMaDT.Text + "','" + txtTenDT.Text + "')";
-            try
+            string sql;
+            //check dữ liệu ko dc để trống
+            if (txtMaDT.Text.Trim() == "")
             {
-                dt.ExcuteNonQuery(sql);
-                btnLuu.Enabled = false;
-                btnXoa.Enabled = true;
-                btnSua.Enabled = true;
+                MessageBox.Show("Mã dân tộc ko đc để trống!");
+                txtMaDT.Focus();
+                return;
             }
-            catch
+            if (txtTenDT.Text.Trim() == "")
             {
-                MessageBox.Show("Đã tồn tại dữ liệu hoặc điền thiếu/điền sai", "Úi có lỗi");
+                MessageBox.Show("Tên dân tộc ko đc để trống!");
+                txtTenDT.Focus();
+                return;
             }
+            sql = "SELECT MaDToc FROM DanToc WHERE MaDToc=N'" +
+            txtMaDT.Text.Trim() + "'";
+            if (Database.CheckKey(sql))
+            {
+                MessageBox.Show("Mã này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaDT.Focus();
+                txtMaDT.Text = "";
+                return;
+            }
+            sql = "INSERT INTO DanToc(MaDToc, TenDToc) VALUES(N'" + txtMaDT.Text + "',N'" + txtTenDT.Text + "')";
+            Database.RunSql(sql);
             LoadDSDT();
+            ResetValues();
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnBoQua.Enabled = false;
+            btnLuu.Enabled = false;
+            txtMaDT.Enabled = false;
+        }
+
+        private void btnBoQua_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+            btnBoQua.Enabled = false;
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnLuu.Enabled = false;
+            txtMaDT.Enabled = false;
         }
     }
 }

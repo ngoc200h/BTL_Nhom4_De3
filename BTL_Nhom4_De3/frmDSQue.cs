@@ -11,6 +11,7 @@ namespace BTL_Nhom4_De3
 {
     public partial class frmDSQue : Form
     {
+        DataTable tblQue;
         public frmDSQue()
         {
             InitializeComponent();
@@ -18,18 +19,22 @@ namespace BTL_Nhom4_De3
 
         private void frmDSQue_Load(object sender, EventArgs e)
         {
+            txtMaQue.Enabled = false;
+            btnLuu.Enabled = false;
+            btnBoQua.Enabled = false;
             LoadDSQue();
         }
-        Database dt = new Database();
-        private void Reset()
+        private void ResetValues()
         {
             txtMaQue.Text = "";
             txtTenQue.Text = "";
         }
         private void LoadDSQue()
         {
-            string sql1 = "select * from Que";
-            dgvQue.DataSource = dt.TaoBang(sql1);
+            string sql;
+            sql = "select * from Que";
+            tblQue = Database.LoadDataToTable(sql);
+            dgvQue.DataSource = tblQue; ;
             //Que (MaQue, TenQue)
             dgvQue.Columns["MaQue"].HeaderText = "Mã Quê";
             dgvQue.Columns["TenQue"].HeaderText = "Tên Quê";
@@ -45,57 +50,110 @@ namespace BTL_Nhom4_De3
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            Reset();
+            ResetValues();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnBoQua.Enabled = true;
             btnLuu.Enabled = true;
-
+            btnThem.Enabled = false;
             txtMaQue.Enabled = true;
             txtMaQue.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa  " + txtMaQue.Text
-                + " không? Nếu có ấn nút Lưu, không thì ấn nút Hủy", "Xóa sản phẩm",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string sql;
+            if (tblQue.Rows.Count == 0)
             {
-                try
-                {
-                    string sql = "delete from Que where MaQue='" + txtMaQue.Text + "'";
-                    dt.ExcuteNonQuery(sql);
-                    string sql1 = "select * from Que";
-                    dgvQue.DataSource = dt.TaoBang(sql1);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Xóa ko nổi.. " + ex.ToString());
-                }
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaQue.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                sql = "DELETE Que WHERE MaQue=N'" + txtMaQue.Text + "'";
+                Database.RunSqlDel(sql);
+                LoadDSQue();
+                ResetValues();
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string sql = "update Que set TenQue='" + txtTenQue.Text + "' where MaQue='" + txtMaQue.Text + "'";
-            dt.ExcuteNonQuery(sql);
+            string sql;
+            if (tblQue.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaQue.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtTenQue.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập tên quê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenQue.Focus();
+                return;
+            }
+            sql = "UPDATE Que SET TenQue=N'" + txtTenQue.Text.ToString() + "' WHERE MaQue=N'" + txtMaQue.Text + "'";
+            Database.RunSql(sql);
             LoadDSQue();
+            ResetValues();
+            btnBoQua.Enabled = false;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql = "insert into Que values('" + txtMaQue.Text + "','" + txtTenQue.Text + "')";
-            try
+            string sql;
+            //check dữ liệu ko dc để trống
+            if (txtMaQue.Text.Trim() == "")
             {
-                dt.ExcuteNonQuery(sql);
-                btnLuu.Enabled = false;
-                btnXoa.Enabled = true;
-                btnSua.Enabled = true;
+                MessageBox.Show("Mã quê ko đc để trống!");
+                txtMaQue.Focus();
+                return;
             }
-            catch
+            if (txtTenQue.Text.Trim() == "")
             {
-                MessageBox.Show("Đã tồn tại mã chức vụ hoặc điền thiếu", "Úi có lỗi");
+                MessageBox.Show("Tên quê ko đc để trống!");
+                txtTenQue.Focus();
+                return;
             }
+            sql = "SELECT MaQue FROM Que WHERE MaQue=N'" +
+            txtMaQue.Text.Trim() + "'";
+            if (Database.CheckKey(sql))
+            {
+                MessageBox.Show("Mã quê này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaQue.Focus();
+                txtMaQue.Text = "";
+                return;
+            }
+            sql = "INSERT INTO Que(MaQue, TenQue) VALUES(N'" + txtMaQue.Text + "',N'" + txtTenQue.Text + "')";
+            Database.RunSql(sql);
             LoadDSQue();
+            ResetValues();
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnBoQua.Enabled = false;
+            btnLuu.Enabled = false;
+            txtMaQue.Enabled = false;
+        }
+
+        private void btnBoQua_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+            btnBoQua.Enabled = false;
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnLuu.Enabled = false;
+            txtMaQue.Enabled = false;
         }
     }
 }

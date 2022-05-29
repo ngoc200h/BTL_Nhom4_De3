@@ -39,7 +39,8 @@ namespace BTL_Nhom4_De3
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbbMaKhoa = new System.Windows.Forms.ComboBox();
+            this.cboMaKhoa = new System.Windows.Forms.ComboBox();
+            this.btnBoQua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChuyenNganh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,14 +62,14 @@ namespace BTL_Nhom4_De3
             // 
             // txtTenChuyenNganh
             // 
-            this.txtTenChuyenNganh.Location = new System.Drawing.Point(208, 60);
+            this.txtTenChuyenNganh.Location = new System.Drawing.Point(208, 62);
             this.txtTenChuyenNganh.Name = "txtTenChuyenNganh";
             this.txtTenChuyenNganh.Size = new System.Drawing.Size(100, 20);
             this.txtTenChuyenNganh.TabIndex = 42;
             // 
             // txtMaChuyenNganh
             // 
-            this.txtMaChuyenNganh.Location = new System.Drawing.Point(208, 25);
+            this.txtMaChuyenNganh.Location = new System.Drawing.Point(208, 27);
             this.txtMaChuyenNganh.Name = "txtMaChuyenNganh";
             this.txtMaChuyenNganh.Size = new System.Drawing.Size(100, 20);
             this.txtMaChuyenNganh.TabIndex = 41;
@@ -76,7 +77,7 @@ namespace BTL_Nhom4_De3
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(102, 63);
+            this.label2.Location = new System.Drawing.Point(102, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 40;
@@ -85,7 +86,7 @@ namespace BTL_Nhom4_De3
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 28);
+            this.label1.Location = new System.Drawing.Point(102, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 39;
@@ -93,7 +94,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(458, 108);
+            this.btnLuu.Location = new System.Drawing.Point(401, 113);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 38;
@@ -103,7 +104,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(340, 108);
+            this.btnSua.Location = new System.Drawing.Point(274, 113);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 37;
@@ -113,7 +114,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(208, 108);
+            this.btnXoa.Location = new System.Drawing.Point(142, 113);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 36;
@@ -123,7 +124,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(89, 108);
+            this.btnThem.Location = new System.Drawing.Point(23, 113);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 35;
@@ -134,26 +135,37 @@ namespace BTL_Nhom4_De3
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(344, 27);
+            this.label3.Location = new System.Drawing.Point(344, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 43;
             this.label3.Text = "Mã Khoa";
             // 
-            // cbbMaKhoa
+            // cboMaKhoa
             // 
-            this.cbbMaKhoa.FormattingEnabled = true;
-            this.cbbMaKhoa.Location = new System.Drawing.Point(401, 24);
-            this.cbbMaKhoa.Name = "cbbMaKhoa";
-            this.cbbMaKhoa.Size = new System.Drawing.Size(121, 21);
-            this.cbbMaKhoa.TabIndex = 44;
+            this.cboMaKhoa.FormattingEnabled = true;
+            this.cboMaKhoa.Location = new System.Drawing.Point(401, 26);
+            this.cboMaKhoa.Name = "cboMaKhoa";
+            this.cboMaKhoa.Size = new System.Drawing.Size(121, 21);
+            this.cboMaKhoa.TabIndex = 44;
+            // 
+            // btnBoQua
+            // 
+            this.btnBoQua.Location = new System.Drawing.Point(526, 113);
+            this.btnBoQua.Name = "btnBoQua";
+            this.btnBoQua.Size = new System.Drawing.Size(75, 23);
+            this.btnBoQua.TabIndex = 45;
+            this.btnBoQua.Text = "Bỏ Qua";
+            this.btnBoQua.UseVisualStyleBackColor = true;
+            this.btnBoQua.Click += new System.EventHandler(this.btnBoQua_Click);
             // 
             // frmDSChuyenNganh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 346);
-            this.Controls.Add(this.cbbMaKhoa);
+            this.Controls.Add(this.btnBoQua);
+            this.Controls.Add(this.cboMaKhoa);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTenChuyenNganh);
             this.Controls.Add(this.txtMaChuyenNganh);
@@ -184,6 +196,7 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbbMaKhoa;
+        private System.Windows.Forms.ComboBox cboMaKhoa;
+        private System.Windows.Forms.Button btnBoQua;
     }
 }

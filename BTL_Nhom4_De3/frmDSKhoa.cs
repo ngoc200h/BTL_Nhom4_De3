@@ -11,6 +11,7 @@ namespace BTL_Nhom4_De3
 {
     public partial class frmDSKhoa : Form
     {
+        DataTable tblKhoa;
         public frmDSKhoa()
         {
             InitializeComponent();
@@ -18,11 +19,12 @@ namespace BTL_Nhom4_De3
 
         private void frmDSKhoa_Load(object sender, EventArgs e)
         {
+            txtMaKhoa.Enabled = false;
+            btnLuu.Enabled = false;
+            btnBoQua.Enabled = false;
             LoadDSKhoa();
         }
-
-        Database dt = new Database();
-        private void Reset()
+        private void ResetValues()
         {
             txtMaKhoa.Text = "";
             txtTenKhoa.Text = "";
@@ -31,8 +33,10 @@ namespace BTL_Nhom4_De3
         }
         private void LoadDSKhoa()
         {
-            string sql1 = "select * from Khoa";
-            dgvKhoa.DataSource = dt.TaoBang(sql1);
+            string sql;
+            sql = "select * from Khoa";
+            tblKhoa = Database.LoadDataToTable(sql);
+            dgvKhoa.DataSource = tblKhoa; ;
             //Khoa (MaKhoa, TenKhoa, DiaChi, Website)
             dgvKhoa.Columns["MaKhoa"].HeaderText = "Mã Khoa";
             dgvKhoa.Columns["TenKhoa"].HeaderText = "Tên Khoa";
@@ -43,60 +47,105 @@ namespace BTL_Nhom4_De3
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            Reset();
+            ResetValues();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnBoQua.Enabled = true;
             btnLuu.Enabled = true;
-
+            btnThem.Enabled = false;
             txtMaKhoa.Enabled = true;
             txtMaKhoa.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa  " + txtMaKhoa.Text
-                + " không? Nếu có ấn nút Lưu, không thì ấn nút Hủy", "Xóa sản phẩm",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string sql;
+            if (tblKhoa.Rows.Count == 0)
             {
-                try
-                {
-                    string sql = "delete from Khoa where MaKhoa='" + txtMaKhoa.Text + "'";
-                    dt.ExcuteNonQuery(sql);
-                    string sql1 = "select * from Khoa";
-                    dgvKhoa.DataSource = dt.TaoBang(sql1);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Xóa ko nổi.. " + ex.ToString());
-                }
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaKhoa.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                sql = "DELETE Khoa WHERE MaKhoa=N'" + txtMaKhoa.Text + "'";
+                Database.RunSqlDel(sql);
+                LoadDSKhoa();
+                ResetValues();
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string sql = "update Khoa set TenKhoa='" + txtTenKhoa.Text
-                + "' where MaKhoa='" + txtMaKhoa.Text + "' where DiaChi='" 
-                + txtDiaChi.Text + "' where Website='" + txtWebsite.Text + "'";
-            dt.ExcuteNonQuery(sql);
+            string sql;
+            if (tblKhoa.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtMaKhoa.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtTenKhoa.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập tên Khoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenKhoa.Focus();
+                return;
+            }
+            sql = "UPDATE Khoa SET TenKhoa=N'" + txtTenKhoa.Text.ToString() +
+                "',DiaChi = N'" + txtDiaChi.Text.ToString() +
+                "',Website = N'" + txtWebsite.Text.ToString() +
+                "' WHERE MaKhoa=N'" + txtMaKhoa.Text + "'";
+            Database.RunSql(sql);
             LoadDSKhoa();
+            ResetValues();
+            btnBoQua.Enabled = false;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql = "insert into Mon values('" + txtMaKhoa.Text + "','"
-                + txtTenKhoa.Text + "','" + txtDiaChi.Text + "','" + txtWebsite.Text + "')";
-            try
+            string sql;
+            //check dữ liệu ko dc để trống
+            if (txtMaKhoa.Text.Trim() == "")
             {
-                dt.ExcuteNonQuery(sql);
-                btnLuu.Enabled = false;
-                btnXoa.Enabled = true;
-                btnSua.Enabled = true;
+                MessageBox.Show("Mã Khoa ko đc để trống!");
+                txtMaKhoa.Focus();
+                return;
             }
-            catch
+            if (txtTenKhoa.Text.Trim() == "")
             {
-                MessageBox.Show("Đã tồn tại dữ liệu hoặc điền thiếu/điền sai", "Úi có lỗi");
+                MessageBox.Show("Tên Khoa ko đc để trống!");
+                txtTenKhoa.Focus();
+                return;
             }
+            sql = "SELECT MaKhoa FROM Khoa WHERE MaKhoa=N'" +
+            txtMaKhoa.Text.Trim() + "'";
+            if (Database.CheckKey(sql))
+            {
+                MessageBox.Show("Mã Khoa này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaKhoa.Focus();
+                txtMaKhoa.Text = "";
+                return;
+            }
+            sql = "INSERT INTO Khoa(MaKhoa, TenKhoa, DiaChi, Website) VALUES(N'" + txtMaKhoa.Text + 
+                "',N'" + txtTenKhoa.Text +
+                "',N'" + txtDiaChi.Text +
+                "',N'" + txtWebsite.Text + "')";
+            Database.RunSql(sql);
             LoadDSKhoa();
+            ResetValues();
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnBoQua.Enabled = false;
+            btnLuu.Enabled = false;
+            txtMaKhoa.Enabled = false;
         }
 
         private void dgvKhoa_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -107,6 +156,17 @@ namespace BTL_Nhom4_De3
             txtTenKhoa.Text = Convert.ToString(row.Cells["TenKhoa"].Value);
             txtDiaChi.Text = Convert.ToString(row.Cells["DiaChi"].Value);
             txtWebsite.Text = Convert.ToString(row.Cells["Website"].Value);
+        }
+
+        private void btnBoQua_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+            btnBoQua.Enabled = false;
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnLuu.Enabled = false;
+            txtMaKhoa.Enabled = false;
         }
     }
 }
