@@ -140,7 +140,7 @@ namespace BTL_Nhom4_De3
                 txtTenLop.Focus();
                 return;
             }
-            sql = "SELECT MaLop FROM Lop WHERE MaCLop=N'" +
+            sql = "SELECT MaLop FROM Lop WHERE MaLop=N'" +
             txtMaLop.Text.Trim() + "'";
             if (Database.CheckKey(sql))
             {

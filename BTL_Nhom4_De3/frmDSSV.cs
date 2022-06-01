@@ -14,7 +14,7 @@ namespace BTL_Nhom4_De3
     public partial class frmDSSV : Form
     {
         DataTable tblSV;
-        string gt; //giới tính
+        //string gt; //giới tính
 
         public frmDSSV()
         {
@@ -25,7 +25,7 @@ namespace BTL_Nhom4_De3
         {
             txtMaSV.Enabled = false;
             btnLuu.Enabled = false;
-            btnBoQua.Enabled = false;
+            btnBoQua.Enabled = true;
             LoadDSSV();
             Database.FillDataToCombo("SELECT MaKhoa, TenKhoa FROM Khoa", cboMaKhoa, "MaKhoa", "TenKhoa");
             cboMaKhoa.SelectedIndex = -1;
@@ -85,6 +85,7 @@ namespace BTL_Nhom4_De3
             btnThem.Enabled = false;
             ResetValues();
             txtMaSV.Focus();
+            txtMaSV.Enabled = true;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -145,15 +146,20 @@ namespace BTL_Nhom4_De3
                 mtbNgaySinh.Focus();
                 return;
             }
-            if (rbtNam.Checked == true)
-                gt = "Nam";
-            if (rbtNu.Checked == true)
-                gt = "Nữ";
+            string gt = dgvSinhVien.CurrentRow.Cells["GTinh"].Value.ToString();
+            if (gt.Trim() == "Nam") //trim() cắt khoản trắng 2 đầu
+            {
+                rbtNam.Checked = true;
+            }
+            else
+            {
+                rbtNu.Checked = true;
+            }
             sql = "UPDATE Sinh_Vien SET  TenSV=N'" + txtTenSV.Text.Trim().ToString() +
                     "',MaKhoa=N'" + cboMaKhoa.SelectedValue.ToString() +
                     "',MaLop=N'" + cboMaLop.SelectedValue.ToString() +
                     "',NgSinh='" + Database.ConvertDateTime(mtbNgaySinh.Text) +
-                    "',GTinh=N'" + gt +
+                    "',GTinh=N'" + gt.Trim() +
                     "',MaQue=N'" + cboMaQue.SelectedValue.ToString() +
                     "',MaDToc=N'" + cboMaDT.SelectedValue.ToString() +
                     "',MaCN=N'" + cboMaCN.SelectedValue.ToString() +
@@ -164,6 +170,7 @@ namespace BTL_Nhom4_De3
             LoadDSSV();
             ResetValues();
             btnBoQua.Enabled = false;
+            txtMaSV.Enabled = false;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -208,11 +215,16 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string sql;
+            string gt = dgvSinhVien.CurrentRow.Cells["GTinh"].Value.ToString();
             sql = "SELECT MaSV FROM Sinh_Vien WHERE MaSV=N'" + txtMaSV.Text.Trim() + "'";
-            if (rbtNam.Checked == true)
-                gt = "Nam";
-            if (rbtNu.Checked == true)
-                gt = "Nữ";
+            if (gt.Trim() == "Nam") //trim() cắt khoản trắng 2 đầu
+            {
+                rbtNam.Checked = true;
+            }
+            else
+            {
+                rbtNu.Checked = true;
+            }
             if (Database.CheckKey(sql))
             {
                 MessageBox.Show("Mã SV này đã có, bạn phải nhập mã khác", "Thông báo",
@@ -227,7 +239,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     "',N'" + cboMaKhoa.SelectedValue.ToString() + 
                     "',N'" + cboMaLop.SelectedValue.ToString() +
                     "','" + Database.ConvertDateTime(mtbNgaySinh.Text) +
-                    "',N'" + gt +
+                    "',N'" + gt.Trim() +
                     "',N'" + cboMaQue.SelectedValue.ToString() +
                     "',N'" + cboMaDT.SelectedValue.ToString() +
                     "',N'" + cboMaCN.SelectedValue.ToString() +
@@ -241,17 +253,21 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             btnSua.Enabled = true;
             btnBoQua.Enabled = false;
             btnLuu.Enabled = false;
-            txtMaSV.Enabled = false;
-
         }
 
         private void dgvSinhVien_Click(object sender, EventArgs e)
         {
             string ma;
-            if (rbtNam.Checked == true)
-                gt = "Nam";
-            if (rbtNu.Checked == true)
-                gt = "Nữ";
+            //Giới tính
+            string gt = dgvSinhVien.CurrentRow.Cells["GTinh"].Value.ToString();
+            if (gt.Trim() == "Nam") //trim() cắt khoản trắng 2 đầu
+            {
+                rbtNam.Checked = true;
+            }
+            else
+            {
+                rbtNu.Checked = true;
+            }
             if (tblSV.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK,
@@ -265,7 +281,6 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             ma = dgvSinhVien.CurrentRow.Cells["MaLop"].Value.ToString();
             cboMaLop.Text = Database.GetFieldValues("SELECT TenLop FROM Lop WHERE MaLop = N'" + ma + "'");
             mtbNgaySinh.Text = dgvSinhVien.CurrentRow.Cells["NgSinh"].Value.ToString();
-            //gt;
             ma = dgvSinhVien.CurrentRow.Cells["MaQue"].Value.ToString();
             cboMaQue.Text = Database.GetFieldValues("SELECT TenQue FROM Que WHERE MaQue = N'" + ma + "'");
             ma = dgvSinhVien.CurrentRow.Cells["MaDToc"].Value.ToString();
@@ -279,6 +294,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnBoQua.Enabled = true;
+            txtMaSV.Enabled = true;
         }
     }
 }

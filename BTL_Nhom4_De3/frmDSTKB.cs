@@ -38,7 +38,7 @@ namespace BTL_Nhom4_De3
                                     "MaMon", "TenMon");
             cboMaMon.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaPhong, TenPhong FROM Phong_Hoc", cboMaPhong,
-                        "MaPhong", "TenPhong");
+                                    "MaPhong", "TenPhong");
             cboMaPhong.SelectedIndex = -1;
             //cbo Học Kỳ
             string[] hk = { "1", "2" };
@@ -151,8 +151,7 @@ namespace BTL_Nhom4_De3
                 cboCaHoc.Focus();
                 return;
             } //ThoiKhoaBieu (MaLop, MaMon, HocKy, ThuHoc, CaHoc, MaPhong)
-            sql = "UPDATE ThoiKhoaBieu SET MaLop=N'" + cboMaLop.SelectedValue.ToString() +
-                "',MaMon=N'" + cboMaMon.SelectedValue.ToString() +
+            sql = "UPDATE ThoiKhoaBieu SET MaMon=N'" + cboMaMon.SelectedValue.ToString() +
                 "',HocKy=N'" + cboHocKy.SelectedValue.ToString() +
                 "',ThuHoc=N'" + cboThuHoc.SelectedValue.ToString() +
                 "',CaHoc=N'" + cboCaHoc.SelectedValue.ToString() +
@@ -176,6 +175,7 @@ namespace BTL_Nhom4_De3
 //                txtMaSV.Text = "";
 //                return;
 //            }
+
             sql = "INSERT INTO ThoiKhoaBieu(MaLop, MaMon, HocKy, ThuHoc, CaHoc, MaPhong) " +
                     "VALUES(N'" + cboMaLop.SelectedValue.ToString() +
                     "',N'" + cboMaMon.SelectedValue.ToString() +
@@ -183,6 +183,7 @@ namespace BTL_Nhom4_De3
                     "',N'" + cboThuHoc.SelectedValue.ToString() +
                     "',N'" + cboCaHoc.SelectedValue.ToString() +
                     "',N'" + cboMaPhong.SelectedValue.ToString() + "')";
+            MessageBox.Show("");
             Database.RunSql(sql);
             LoadDSTKB();
             ResetValues();
@@ -218,7 +219,7 @@ MessageBoxIcon.Information);
             cboMaLop.Text = Database.GetFieldValues("SELECT TenLop FROM Lop WHERE MaLop = N'" + ma + "'");
             ma = dgvTKB.CurrentRow.Cells["MaMon"].Value.ToString();
             cboMaMon.Text = Database.GetFieldValues("SELECT TenMon FROM Mon WHERE MaMon = N'" + ma + "'");
-            ma = dgvTKB.CurrentRow.Cells["HocKy"].Value.ToString();
+            ma = dgvTKB.CurrentRow.Cells["MaPhong"].Value.ToString();
             cboMaPhong.Text = Database.GetFieldValues("SELECT MaPhong FROM Phong_Hoc WHERE MaPhong = N'" + ma + "'");
             btnSua.Enabled = true;
             btnXoa.Enabled = true;

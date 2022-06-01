@@ -120,8 +120,7 @@ namespace BTL_Nhom4_De3
                 cboLanThi.Focus();
                 return;
             } //Diem (MaSV, MaLop, MaMon, HocKy, LanThi, Diem)
-            sql = "UPDATE Diem SET MaSV=N'" + txtMaSV.Text.Trim().ToString() +
-                "',MaLop=N'" + cboMaLop.SelectedValue.ToString() +
+            sql = "UPDATE Diem SET MaLop=N'" + cboMaLop.SelectedValue.ToString() +
                 "',MaMon=N'" + cboMaMon.SelectedValue.ToString() +
                 "',HocKy=N'" + cboHocKy.SelectedValue.ToString() +
                 "',LanThi=N'" + cboLanThi.SelectedValue.ToString() +

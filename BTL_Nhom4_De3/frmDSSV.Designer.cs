@@ -252,7 +252,7 @@ namespace BTL_Nhom4_De3
             this.mtbNgaySinh.Location = new System.Drawing.Point(117, 65);
             this.mtbNgaySinh.Mask = "00/00/0000";
             this.mtbNgaySinh.Name = "mtbNgaySinh";
-            this.mtbNgaySinh.Size = new System.Drawing.Size(75, 20);
+            this.mtbNgaySinh.Size = new System.Drawing.Size(85, 20);
             this.mtbNgaySinh.TabIndex = 88;
             this.mtbNgaySinh.ValidatingType = typeof(System.DateTime);
             // 
