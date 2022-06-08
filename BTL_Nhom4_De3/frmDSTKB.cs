@@ -152,7 +152,7 @@ namespace BTL_Nhom4_De3
                 return;
             } //ThoiKhoaBieu (MaLop, MaMon, HocKy, ThuHoc, CaHoc, MaPhong)
             sql = "UPDATE ThoiKhoaBieu SET MaMon=N'" + cboMaMon.SelectedValue.ToString() +
-                "',HocKy=N'" + cboHocKy.SelectedValue.ToString() +
+                "',HocKy=N'" + cboHocKy.SelectedItem.ToString() +
                 "',ThuHoc=N'" + cboThuHoc.SelectedValue.ToString() +
                 "',CaHoc=N'" + cboCaHoc.SelectedValue.ToString() +
                 "',MaPhong=N'" + cboMaPhong.SelectedValue.ToString() +
@@ -166,23 +166,30 @@ namespace BTL_Nhom4_De3
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string sql;
-//            sql = "SELECT MaLop FROM ThoiKhoaBieu WHERE MaLop=N'" + cboMaLop.SelectedValue.ToString() + "'";
-//            if (Database.CheckKey(sql))
-//            {
-//                MessageBox.Show("Mã này đã có, bạn phải nhập mã khác", "Thông báo",
-//MessageBoxButtons.OK, MessageBoxIcon.Warning);
-//                txtMaSV.Focus();
-//                txtMaSV.Text = "";
-//                return;
-//            }
+            //            sql = "SELECT MaLop FROM ThoiKhoaBieu WHERE MaLop=N'" + cboMaLop.SelectedValue.ToString() + "'";
+            //            if (Database.CheckKey(sql))
+            //            {
+            //                MessageBox.Show("Mã này đã có, bạn phải nhập mã khác", "Thông báo",
+            //MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //                txtMaSV.Focus();
+            //                txtMaSV.Text = "";
+            //                return;
+            //            }
+
+            //MessageBox.Show(cboMaLop.SelectedValue.ToString());
+            //MessageBox.Show(cboMaMon.SelectedValue.ToString());
+            //MessageBox.Show(cboHocKy.SelectedItem.ToString());
+            //MessageBox.Show(cboThuHoc.SelectedItem.ToString());
+            //MessageBox.Show(cboCaHoc.SelectedItem.ToString());
+            //MessageBox.Show(cboMaPhong.SelectedValue.ToString());
 
             sql = "INSERT INTO ThoiKhoaBieu(MaLop, MaMon, HocKy, ThuHoc, CaHoc, MaPhong) " +
-                    "VALUES(N'" + cboMaLop.SelectedValue.ToString() +
-                    "',N'" + cboMaMon.SelectedValue.ToString() +
-                    "',N'" + cboHocKy.SelectedValue.ToString() +
-                    "',N'" + cboThuHoc.SelectedValue.ToString() +
-                    "',N'" + cboCaHoc.SelectedValue.ToString() +
-                    "',N'" + cboMaPhong.SelectedValue.ToString() + "')";
+                    "VALUES('" + cboMaLop.SelectedValue.ToString() +
+                    "','" + cboMaMon.SelectedValue.ToString() +
+                    "'," + cboHocKy.SelectedItem.ToString() +
+                    "," + cboThuHoc.SelectedItem.ToString() +
+                    "'," + cboCaHoc.SelectedItem.ToString() +
+                    ",'" + cboMaPhong.SelectedValue.ToString() + "')";
             MessageBox.Show("");
             Database.RunSql(sql);
             LoadDSTKB();
