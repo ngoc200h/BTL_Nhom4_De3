@@ -76,35 +76,35 @@ namespace BTL_Nhom4_De3
             // sinhVienToolStripMenuItem
             // 
             this.sinhVienToolStripMenuItem.Name = "sinhVienToolStripMenuItem";
-            this.sinhVienToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sinhVienToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.sinhVienToolStripMenuItem.Text = "Sinh Viên";
             this.sinhVienToolStripMenuItem.Click += new System.EventHandler(this.sinhVienToolStripMenuItem_Click);
             // 
             // diemToolStripMenuItem
             // 
             this.diemToolStripMenuItem.Name = "diemToolStripMenuItem";
-            this.diemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.diemToolStripMenuItem.Text = "Điểm";
             this.diemToolStripMenuItem.Click += new System.EventHandler(this.diemToolStripMenuItem_Click);
             // 
             // chucVuToolStripMenuItem
             // 
             this.chucVuToolStripMenuItem.Name = "chucVuToolStripMenuItem";
-            this.chucVuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chucVuToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.chucVuToolStripMenuItem.Text = "Chức vụ";
             this.chucVuToolStripMenuItem.Click += new System.EventHandler(this.chucVuToolStripMenuItem_Click);
             // 
             // queQuanToolStripMenuItem
             // 
             this.queQuanToolStripMenuItem.Name = "queQuanToolStripMenuItem";
-            this.queQuanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.queQuanToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.queQuanToolStripMenuItem.Text = "Quê Quán";
             this.queQuanToolStripMenuItem.Click += new System.EventHandler(this.queQuanToolStripMenuItem_Click);
             // 
             // danTocToolStripMenuItem
             // 
             this.danTocToolStripMenuItem.Name = "danTocToolStripMenuItem";
-            this.danTocToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.danTocToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.danTocToolStripMenuItem.Text = "Dân Tộc";
             this.danTocToolStripMenuItem.Click += new System.EventHandler(this.danTocToolStripMenuItem_Click);
             // 
@@ -185,14 +185,14 @@ namespace BTL_Nhom4_De3
             this.pnlContent.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlContent.Location = new System.Drawing.Point(0, 24);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(848, 377);
+            this.pnlContent.Size = new System.Drawing.Size(848, 450);
             this.pnlContent.TabIndex = 2;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 401);
+            this.ClientSize = new System.Drawing.Size(848, 474);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

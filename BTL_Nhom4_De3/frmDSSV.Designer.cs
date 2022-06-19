@@ -61,6 +61,7 @@ namespace BTL_Nhom4_De3
             this.btnLuu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvSinhVien
@@ -173,15 +174,16 @@ namespace BTL_Nhom4_De3
             // cboMaCN
             // 
             this.cboMaCN.FormattingEnabled = true;
-            this.cboMaCN.Location = new System.Drawing.Point(681, 65);
+            this.cboMaCN.Location = new System.Drawing.Point(119, 94);
             this.cboMaCN.Name = "cboMaCN";
             this.cboMaCN.Size = new System.Drawing.Size(121, 21);
             this.cboMaCN.TabIndex = 97;
+            this.cboMaCN.SelectedIndexChanged += new System.EventHandler(this.cboMaCN_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(581, 68);
+            this.label8.Location = new System.Drawing.Point(19, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 96;
@@ -208,7 +210,7 @@ namespace BTL_Nhom4_De3
             // cboMaQue
             // 
             this.cboMaQue.FormattingEnabled = true;
-            this.cboMaQue.Location = new System.Drawing.Point(681, 99);
+            this.cboMaQue.Location = new System.Drawing.Point(119, 27);
             this.cboMaQue.Name = "cboMaQue";
             this.cboMaQue.Size = new System.Drawing.Size(121, 21);
             this.cboMaQue.TabIndex = 93;
@@ -216,7 +218,7 @@ namespace BTL_Nhom4_De3
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(619, 102);
+            this.label6.Location = new System.Drawing.Point(57, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 92;
@@ -242,10 +244,11 @@ namespace BTL_Nhom4_De3
             // cboMaKhoa
             // 
             this.cboMaKhoa.FormattingEnabled = true;
-            this.cboMaKhoa.Location = new System.Drawing.Point(681, 132);
+            this.cboMaKhoa.Location = new System.Drawing.Point(119, 60);
             this.cboMaKhoa.Name = "cboMaKhoa";
             this.cboMaKhoa.Size = new System.Drawing.Size(121, 21);
             this.cboMaKhoa.TabIndex = 89;
+            this.cboMaKhoa.SelectedIndexChanged += new System.EventHandler(this.cboMaKhoa_SelectedIndexChanged);
             // 
             // mtbNgaySinh
             // 
@@ -281,7 +284,7 @@ namespace BTL_Nhom4_De3
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(619, 135);
+            this.label4.Location = new System.Drawing.Point(57, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 85;
@@ -343,6 +346,12 @@ namespace BTL_Nhom4_De3
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboMaQue);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cboMaKhoa);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cboMaCN);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(562, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(263, 134);
@@ -361,19 +370,13 @@ namespace BTL_Nhom4_De3
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cboMaHeDT);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cboMaCN);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.cboMaDT);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cboMaQue);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.cboMaLop);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cboMaKhoa);
             this.Controls.Add(this.mtbNgaySinh);
             this.Controls.Add(this.rbtNu);
             this.Controls.Add(this.rbtNam);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtTenSV);
@@ -390,6 +393,8 @@ namespace BTL_Nhom4_De3
             this.Text = "Danh Sách Sinh Viên";
             this.Load += new System.EventHandler(this.frmDSSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

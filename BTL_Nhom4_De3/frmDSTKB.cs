@@ -47,7 +47,7 @@ namespace BTL_Nhom4_De3
                 cboHocKy.Items.Add(x);
             }
             //cbo Thứ học
-            string[] th = { "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật" };
+            string[] th = { "Thu 2", "Thu ba", "Thu tu", "Thu nam", "Thu sau", "Thu bay", "Chu Nhat" };
             foreach (string x in th)
             {
                 cboThuHoc.Items.Add(x);
@@ -151,12 +151,12 @@ namespace BTL_Nhom4_De3
                 cboCaHoc.Focus();
                 return;
             } //ThoiKhoaBieu (MaLop, MaMon, HocKy, ThuHoc, CaHoc, MaPhong)
-            sql = "UPDATE ThoiKhoaBieu SET MaMon=N'" + cboMaMon.SelectedValue.ToString() +
-                "',HocKy=N'" + cboHocKy.SelectedItem.ToString() +
-                "',ThuHoc=N'" + cboThuHoc.SelectedValue.ToString() +
-                "',CaHoc=N'" + cboCaHoc.SelectedValue.ToString() +
-                "',MaPhong=N'" + cboMaPhong.SelectedValue.ToString() +
-                "' WHERE MaLop=N'" + cboMaLop.SelectedValue + "'";
+            sql = "UPDATE ThoiKhoaBieu SET MaMon='" + cboMaMon.SelectedValue.ToString() +
+                "'," + cboHocKy.SelectedItem.ToString() +
+                "," + cboThuHoc.SelectedItem.ToString() +
+                "'," + cboCaHoc.SelectedItem.ToString() +
+                "',MaPhong='" + cboMaPhong.SelectedValue.ToString() +
+                "' WHERE MaLop='" + cboMaLop.SelectedValue + "'";
             Database.RunSql(sql);
             LoadDSTKB();
             ResetValues();
