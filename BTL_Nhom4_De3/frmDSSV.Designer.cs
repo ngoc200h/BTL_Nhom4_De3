@@ -249,6 +249,7 @@ namespace BTL_Nhom4_De3
             this.cboMaKhoa.Size = new System.Drawing.Size(121, 21);
             this.cboMaKhoa.TabIndex = 89;
             this.cboMaKhoa.SelectedIndexChanged += new System.EventHandler(this.cboMaKhoa_SelectedIndexChanged);
+            this.cboMaKhoa.TextChanged += new System.EventHandler(this.cboMaKhoa_TextChanged);
             // 
             // mtbNgaySinh
             // 

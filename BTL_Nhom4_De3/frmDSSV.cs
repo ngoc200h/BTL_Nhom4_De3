@@ -27,13 +27,13 @@ namespace BTL_Nhom4_De3
             txtMaSV.Enabled = false;
             btnLuu.Enabled = false;
             btnBoQua.Enabled = true;
-            cboMaCN.Enabled = false;
+            cboMaCN.Enabled = true;
             LoadDSSV();
 
             Database.FillDataToCombo("SELECT MaKhoa, TenKhoa FROM Khoa", cboMaKhoa, "MaKhoa", "TenKhoa");
             cboMaKhoa.SelectedIndex = -1;
             cboMaKhoa_SelectedIndexChanged(null, null);
-            cboMaCN.Enabled = false;
+            
             Database.FillDataToCombo("SELECT MaLop, TenLop FROM Lop", cboMaLop, "MaLop", "TenLop");
             cboMaLop.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaQue, TenQue FROM Que", cboMaQue, "MaQue", "TenQue");
@@ -41,8 +41,8 @@ namespace BTL_Nhom4_De3
             Database.FillDataToCombo("SELECT MaDToc, TenDToc FROM DanToc", cboMaDT, "MaDToc", "TenDToc");
             cboMaDT.SelectedIndex = -1;
 
-            Database.FillDataToCombo("SELECT MaCN, TenCN FROM Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
-            cboMaCN.SelectedIndex = -1;
+            //Database.FillDataToCombo("SELECT MaCN, TenCN FROM Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
+            //cboMaCN.SelectedIndex = -1;
             /*
             if (cboMaCN.Text != "")
             {
@@ -56,6 +56,8 @@ namespace BTL_Nhom4_De3
                 cboMaCN.ValueMember = "TenKhoa";
                 cboMaCN_SelectedIndexChanged(null, null);
             } */
+            Database.FillDataToCombo("SELECT MaCN, TenCN FROM Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
+            cboMaCN.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaHeDT, TenHeDT FROM HeDaoTao", cboMaHeDT, "MaHeDT", "TenHeDT");
             cboMaHeDT.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaChucVu, TenChucVu FROM ChucVu", cboMaChucVu, "MaChucVu", "TenChucVu");
@@ -368,6 +370,23 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //int val;
             //Int32.TryParse(cboMaKhoa.SelectedValue.ToString(), out val);
             //string sql = "SELECT MaCN, TenCN, MaKhoa FROM Chuyen_Nganh WHERE MaKhoa = " + val;
+        }
+
+        private void cboMaKhoa_TextChanged(object sender, EventArgs e)
+        {
+            string str;
+            if (cboMaKhoa.Text == "")
+            {
+                cboMaLop.Text = "";
+                cboMaCN.Text = "";
+            }
+            //Khi kich chon Ma Khoa thi ten lớp, tên chuyên ngành chỉ hiện những dữ liệu thuộc khoa đó
+            //Hiện tại khi chọn mã khoa thì chỉ hiện 1 trong số các dữ liệu lên combobox thôi :((((
+            str = "Select TenCN from Chuyen_Nganh where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
+            cboMaCN.Text = Database.GetFieldValues(str);
+            str = "Select TenLop from Lop where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
+            cboMaLop.Text = Database.GetFieldValues(str);
+
         }
     }
 }
