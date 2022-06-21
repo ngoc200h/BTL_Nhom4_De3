@@ -19,7 +19,7 @@ namespace BTL_Nhom4_De3
 
         public static void Connect()
         {
-            connString = "Data Source=NGOC9YO\\SQLEXPRESS;" +
+            connString = "Data Source= localhost;" +
                                      "Initial Catalog = QuanLySinhVien;" +
                                      "Integrated Security=True";
             Conn = new SqlConnection();
