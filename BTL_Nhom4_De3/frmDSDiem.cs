@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using COMExcel = Microsoft.Office.Interop.Excel;
 
 namespace BTL_Nhom4_De3
 {
@@ -120,12 +122,12 @@ namespace BTL_Nhom4_De3
                 cboLanThi.Focus();
                 return;
             } //Diem (MaSV, MaLop, MaMon, HocKy, LanThi, Diem)
-            sql = "UPDATE Diem SET MaLop=N'" + cboMaLop.SelectedValue.ToString() +
-                "',MaMon=N'" + cboMaMon.SelectedValue.ToString() +
-                "',HocKy=N'" + cboHocKy.SelectedValue.ToString() +
-                "',LanThi=N'" + cboLanThi.SelectedValue.ToString() +
-                "',Diem=N'" + txtDiem.Text.Trim().ToString() +
-                "' WHERE MaSV=N'" + txtMaSV.Text + "'";
+            sql = "UPDATE Diem SET MaLop='" + cboMaLop.SelectedValue.ToString() +
+                "',MaMon='" + cboMaMon.SelectedValue.ToString() +
+                "'," + cboHocKy.SelectedItem.ToString() +
+                "," + cboLanThi.SelectedItem.ToString() +
+                "',Diem='" + txtDiem.Text.Trim().ToString() +
+                "' WHERE MaSV='" + txtMaSV.Text + "'";
             Database.RunSql(sql);
             LoadDSDiem();
             ResetValues();
@@ -145,12 +147,12 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             sql = "INSERT INTO Diem (MaSV, MaLop, MaMon, HocKy, LanThi, Diem) " +
-                    "VALUES(N'" + txtMaSV.Text.Trim() +
-                    "',N'" + cboMaLop.SelectedValue.ToString() +
-                    "',N'" + cboMaMon.SelectedValue.ToString() +
-                    "',N'" + cboHocKy.SelectedValue.ToString() +
-                    "',N'" + cboLanThi.SelectedValue.ToString() +
-                    "',N'" + txtDiem.Text.Trim() + "')";
+                    "VALUES('" + txtMaSV.Text.Trim() +
+                    "','" + cboMaLop.SelectedValue.ToString().Trim() +
+                    "'," + cboMaMon.SelectedValue.ToString().Trim() +
+                    "," + cboHocKy.SelectedItem.ToString().Trim() +
+                    "'," + cboLanThi.SelectedItem.ToString().Trim() +
+                    ",'" + txtDiem.Text.Trim() + "')";
             Database.RunSql(sql);
             LoadDSDiem();
             ResetValues();
@@ -186,12 +188,10 @@ MessageBoxIcon.Information);
             txtDiem.Text = dgvDiem.CurrentRow.Cells["Diem"].Value.ToString();
             ma = dgvDiem.CurrentRow.Cells["MaLop"].Value.ToString();
             cboMaLop.Text = Database.GetFieldValues("SELECT TenLop FROM Lop WHERE MaLop = N'" + ma + "'");
-            ma = dgvDiem.CurrentRow.Cells["HocKy"].Value.ToString();
-            cboHocKy.Text = Database.GetFieldValues("SELECT HocKy FROM Diem WHERE MaSV = N'" + ma + "'");
+            cboHocKy.Text = dgvDiem.CurrentRow.Cells["HocKy"].Value.ToString();
             ma = dgvDiem.CurrentRow.Cells["MaMon"].Value.ToString();
             cboMaMon.Text = Database.GetFieldValues("SELECT TenMon FROM Mon WHERE MaMon = N'" + ma + "'");
-            ma = dgvDiem.CurrentRow.Cells["LanThi"].Value.ToString();
-            cboLanThi.Text = Database.GetFieldValues("SELECT LanThi FROM Diem WHERE MaSV = N'" + ma + "'");
+            cboLanThi.Text = dgvDiem.CurrentRow.Cells["LanThi"].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnBoQua.Enabled = true;
@@ -205,7 +205,7 @@ MessageBoxIcon.Information);
                 && (cboMaMon.Text == "")
                 && (cboLanThi.Text == ""))
             {
-                MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...",
+                MessageBox.Show("Hãy nhập ít nhất một điều kiện tìm kiếm!!!", "Yêu cầu ...",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -213,11 +213,11 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (cboMaLop.Text != "")
                 sql = sql + " AND MaLop Like N'%" + cboMaLop.SelectedValue + "%'";
             if (cboHocKy.Text != "")
-                sql = sql + " AND HocKy Like N'%" + cboHocKy.SelectedValue + "%'";
+                sql = sql + " AND HocKy Like N'%" + cboHocKy.SelectedItem + "%'";
             if (cboMaMon.Text != "")
                 sql = sql + " AND MaMon Like N'%" + cboMaMon.SelectedValue + "%'";
             if (cboLanThi.Text != "")
-                sql = sql + " AND LanThi Like N'%" + cboLanThi.SelectedValue + "%'";
+                sql = sql + " AND LanThi Like N'%" + cboLanThi.SelectedItem + "%'";
             tblDiem = Database.LoadDataToTable(sql);
             if (tblDiem.Rows.Count == 0)
                 MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!!", "Thông báo",
@@ -227,6 +227,71 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             dgvDiem.DataSource = tblDiem;
             ResetValues();
+        }
+        private void btnInDSDiem_Click_1(object sender, EventArgs e)
+        {
+            COMExcel.Application exApp = new COMExcel.Application();
+            COMExcel.Workbook exBook; //Trong 1 chương trình Excel có nhiều Workbook
+            COMExcel.Worksheet exSheet; //Trong 1 Workbook có nhiều Worksheet
+            COMExcel.Range exRange;
+            string sql;
+            int hang = 0, cot = 0;
+            DataTable tblInDSDiem;
+            exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
+            exSheet = exBook.Worksheets[1];
+            // Định dạng chung
+            exRange = exSheet.Cells[1, 1];
+            exRange.Range["A1:B3"].Font.Size = 10;
+            exRange.Range["A1:B3"].Font.Name = "Times new roman";
+            exRange.Range["A1:B3"].Font.Bold = true;
+            exRange.Range["A1:B3"].Font.ColorIndex = 5; //Màu xanh da trời
+            exRange.Range["A1:A1"].ColumnWidth = 7;
+            exRange.Range["B1:B1"].ColumnWidth = 15;
+            exRange.Range["A1:B1"].MergeCells = true;
+            exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["A1:B1"].Value = "Hệ thống quản lý sinh viên";
+
+            exRange.Range["A2:B2"].MergeCells = true;
+            exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["A2:B2"].Value = "Nhóm 2";
+
+            exRange.Range["A3:B3"].MergeCells = true;
+            exRange.Range["A3:B3"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["A3:B3"].Value = "BTL môn Cơ Sở Lập Trình 2";
+
+
+            exRange.Range["C2:E2"].Font.Size = 16;
+            exRange.Range["C2:E2"].Font.Name = "Times new roman";
+            exRange.Range["C2:E2"].Font.Bold = true;
+            exRange.Range["C2:E2"].Font.ColorIndex = 3; //Màu đỏ
+            exRange.Range["C2:E2"].MergeCells = true;
+            exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["C2:E2"].Value = "DANH SÁCH ĐIỂM";
+            // Biểu diễn thông tin chung danh sách điểm của các sinh viên theo lớp học, môn học, lần thi
+            sql = "SELECT a.MaSV, a.TenSV, b.MaLop, b.TenLop, c.MaMon, c.TenMon, d.LanThi " +
+                "From Sinh_Vien a, Lop b, Mon c, Diem d " +
+                "Where b.MaLop = N'" + cboMaLop.SelectedItem + "' and c.MaMon = N'" + cboMaMon.SelectedItem + "' and d.LanThi = N'" + cboLanThi.SelectedItem + "'";
+            tblInDSDiem = Database.LoadDataToTable(sql);
+            //exRange.Range["B6:C9"].Font.Size = 12;
+            //exRange.Range["B6:C9"].Font.Name = "Times new roman";
+            //exRange.Range["B6:B6"].Value = "Ten:";
+            //exRange.Range["C6:E6"].MergeCells = true;
+            //exRange.Range["C6:E6"].Value = tblThongtinHD.Rows[0][0].ToString();
+            //exRange.Range["B7:B7"].Value = "Khách hàng:";
+            //exRange.Range["C7:E7"].MergeCells = true;
+            //exRange.Range["C7:E7"].Value = tblThongtinHD.Rows[0][3].ToString();
+            //exRange.Range["B8:B8"].Value = "Địa chỉ:";
+            //exRange.Range["C8:E8"].MergeCells = true;
+            //exRange.Range["C8:E8"].Value = tblThongtinHD.Rows[0][4].ToString();
+            //exRange.Range["B9:B9"].Value = "Điện thoại:";
+            //exRange.Range["C9:E9"].MergeCells = true;
+            //exRange.Range["C9:E9"].Value = tblThongtinHD.Rows[0][5].ToString();
+            ////Lấy thông tin các mặt hàng
+            //sql = "SELECT b.Tenhang, a.Soluong, b.Dongiaban, a.Giamgia, a.Thanhtien " +
+            //      "FROM tblChitietHDBan AS a , tblHang AS b WHERE a.MaHDBan = N'" + 
+            //      txtMaHDBan.Text + "' AND a.Mahang = b.Mahang";
+            //tblThongtinHang = Functions.GetDataToTable(sql);
+
         }
     }
 }

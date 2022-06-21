@@ -44,6 +44,7 @@ namespace BTL_Nhom4_De3
             this.cboLanThi = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnInDSDiem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.txtDiem = new System.Windows.Forms.TextBox();
@@ -128,7 +129,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(525, 47);
+            this.btnTimKiem.Location = new System.Drawing.Point(525, 30);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
             this.btnTimKiem.TabIndex = 46;
@@ -189,6 +190,7 @@ namespace BTL_Nhom4_De3
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnInDSDiem);
             this.groupBox1.Controls.Add(this.cboLanThi);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnTimKiem);
@@ -204,6 +206,16 @@ namespace BTL_Nhom4_De3
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Điền thông tin để  nhập điểm";
+            // 
+            // btnInDSDiem
+            // 
+            this.btnInDSDiem.Location = new System.Drawing.Point(525, 66);
+            this.btnInDSDiem.Name = "btnInDSDiem";
+            this.btnInDSDiem.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSDiem.TabIndex = 68;
+            this.btnInDSDiem.Text = "In DS Điểm";
+            this.btnInDSDiem.UseVisualStyleBackColor = true;
+            this.btnInDSDiem.Click += new System.EventHandler(this.btnInDSDiem_Click_1);
             // 
             // label1
             // 
@@ -283,5 +295,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.TextBox txtMaSV;
         private System.Windows.Forms.TextBox txtDiem;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnInDSDiem;
     }
 }
