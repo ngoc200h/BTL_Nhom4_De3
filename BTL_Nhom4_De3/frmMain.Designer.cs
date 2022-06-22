@@ -176,7 +176,7 @@ namespace BTL_Nhom4_De3
             this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
             this.thoatToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.thoatToolStripMenuItem.Text = "Thoát";
-            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
+//            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
             // 
             // pnlContent
             // 

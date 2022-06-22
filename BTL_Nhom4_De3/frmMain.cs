@@ -34,9 +34,12 @@ namespace BTL_Nhom4_De3
             f.Show();
         }
 
-        private void thoatToolStripMenuItem_Click(object sender, EventArgs e)
+        private void thoatToolStripMenuItem_Click(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Do you want to close this application?", "Exit", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
         private void sinhVienToolStripMenuItem_Click(object sender, EventArgs e)
         {
