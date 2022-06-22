@@ -49,6 +49,8 @@ namespace BTL_Nhom4_De3
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.txtDiem = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnInBangDiem = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiem)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,18 +63,18 @@ namespace BTL_Nhom4_De3
             this.dgvDiem.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvDiem.Location = new System.Drawing.Point(0, 199);
+            this.dgvDiem.Location = new System.Drawing.Point(0, 186);
             this.dgvDiem.MultiSelect = false;
             this.dgvDiem.Name = "dgvDiem";
             this.dgvDiem.ReadOnly = true;
             this.dgvDiem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDiem.Size = new System.Drawing.Size(848, 202);
+            this.dgvDiem.Size = new System.Drawing.Size(848, 253);
             this.dgvDiem.TabIndex = 6;
             this.dgvDiem.Click += new System.EventHandler(this.dgvDiem_Click);
             // 
             // btnBoQua
             // 
-            this.btnBoQua.Location = new System.Drawing.Point(722, 135);
+            this.btnBoQua.Location = new System.Drawing.Point(722, 105);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(75, 23);
             this.btnBoQua.TabIndex = 56;
@@ -109,7 +111,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(722, 91);
+            this.btnSua.Location = new System.Drawing.Point(722, 76);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 48;
@@ -119,7 +121,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(722, 46);
+            this.btnXoa.Location = new System.Drawing.Point(722, 47);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 47;
@@ -129,7 +131,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(525, 30);
+            this.btnTimKiem.Location = new System.Drawing.Point(525, 46);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
             this.btnTimKiem.TabIndex = 46;
@@ -190,7 +192,6 @@ namespace BTL_Nhom4_De3
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnInDSDiem);
             this.groupBox1.Controls.Add(this.cboLanThi);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnTimKiem);
@@ -209,7 +210,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnInDSDiem
             // 
-            this.btnInDSDiem.Location = new System.Drawing.Point(525, 66);
+            this.btnInDSDiem.Location = new System.Drawing.Point(722, 147);
             this.btnInDSDiem.Name = "btnInDSDiem";
             this.btnInDSDiem.Size = new System.Drawing.Size(75, 23);
             this.btnInDSDiem.TabIndex = 68;
@@ -235,25 +236,47 @@ namespace BTL_Nhom4_De3
             // 
             // txtDiem
             // 
-            this.txtDiem.Location = new System.Drawing.Point(406, 147);
+            this.txtDiem.Location = new System.Drawing.Point(482, 147);
             this.txtDiem.Name = "txtDiem";
-            this.txtDiem.Size = new System.Drawing.Size(121, 20);
+            this.txtDiem.Size = new System.Drawing.Size(45, 20);
             this.txtDiem.TabIndex = 67;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(349, 150);
+            this.label2.Location = new System.Drawing.Point(445, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 66;
             this.label2.Text = "Điểm";
             // 
+            // btnInBangDiem
+            // 
+            this.btnInBangDiem.Location = new System.Drawing.Point(271, 147);
+            this.btnInBangDiem.Name = "btnInBangDiem";
+            this.btnInBangDiem.Size = new System.Drawing.Size(136, 23);
+            this.btnInBangDiem.TabIndex = 69;
+            this.btnInBangDiem.Text = "In Bảng Điểm theo MSV";
+            this.btnInBangDiem.UseVisualStyleBackColor = true;
+            this.btnInBangDiem.Click += new System.EventHandler(this.btnInBangDiem_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(160, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.TabIndex = 70;
+            this.label7.Text = "Cú pháp: SV + số";
+            // 
             // frmDSDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 401);
+            this.ClientSize = new System.Drawing.Size(848, 439);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnInBangDiem);
+            this.Controls.Add(this.btnInDSDiem);
             this.Controls.Add(this.txtDiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMaSV);
@@ -296,5 +319,7 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.TextBox txtDiem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnInDSDiem;
+        private System.Windows.Forms.Button btnInBangDiem;
+        private System.Windows.Forms.Label label7;
     }
 }
