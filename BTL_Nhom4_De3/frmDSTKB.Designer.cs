@@ -47,6 +47,7 @@ namespace BTL_Nhom4_De3
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.btnInTKB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKB)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@ namespace BTL_Nhom4_De3
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 30);
+            this.label3.Location = new System.Drawing.Point(48, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 59;
@@ -78,7 +79,7 @@ namespace BTL_Nhom4_De3
             // cboMaLop
             // 
             this.cboMaLop.FormattingEnabled = true;
-            this.cboMaLop.Location = new System.Drawing.Point(105, 27);
+            this.cboMaLop.Location = new System.Drawing.Point(105, 105);
             this.cboMaLop.Name = "cboMaLop";
             this.cboMaLop.Size = new System.Drawing.Size(121, 21);
             this.cboMaLop.TabIndex = 60;
@@ -86,7 +87,7 @@ namespace BTL_Nhom4_De3
             // cboMaMon
             // 
             this.cboMaMon.FormattingEnabled = true;
-            this.cboMaMon.Location = new System.Drawing.Point(105, 65);
+            this.cboMaMon.Location = new System.Drawing.Point(105, 27);
             this.cboMaMon.Name = "cboMaMon";
             this.cboMaMon.Size = new System.Drawing.Size(121, 21);
             this.cboMaMon.TabIndex = 62;
@@ -94,7 +95,7 @@ namespace BTL_Nhom4_De3
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 68);
+            this.label4.Location = new System.Drawing.Point(48, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 61;
@@ -120,15 +121,15 @@ namespace BTL_Nhom4_De3
             // cboHocKy
             // 
             this.cboHocKy.FormattingEnabled = true;
-            this.cboHocKy.Location = new System.Drawing.Point(105, 105);
+            this.cboHocKy.Location = new System.Drawing.Point(369, 105);
             this.cboHocKy.Name = "cboHocKy";
-            this.cboHocKy.Size = new System.Drawing.Size(121, 21);
+            this.cboHocKy.Size = new System.Drawing.Size(119, 21);
             this.cboHocKy.TabIndex = 66;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 108);
+            this.label5.Location = new System.Drawing.Point(312, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 65;
@@ -154,7 +155,7 @@ namespace BTL_Nhom4_De3
             // cboMaPhong
             // 
             this.cboMaPhong.FormattingEnabled = true;
-            this.cboMaPhong.Location = new System.Drawing.Point(367, 105);
+            this.cboMaPhong.Location = new System.Drawing.Point(105, 65);
             this.cboMaPhong.Name = "cboMaPhong";
             this.cboMaPhong.Size = new System.Drawing.Size(121, 21);
             this.cboMaPhong.TabIndex = 70;
@@ -162,7 +163,7 @@ namespace BTL_Nhom4_De3
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(310, 108);
+            this.label7.Location = new System.Drawing.Point(48, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 69;
@@ -180,7 +181,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(628, 103);
+            this.btnLuu.Location = new System.Drawing.Point(687, 103);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 74;
@@ -218,11 +219,22 @@ namespace BTL_Nhom4_De3
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // btnInTKB
+            // 
+            this.btnInTKB.Location = new System.Drawing.Point(570, 103);
+            this.btnInTKB.Name = "btnInTKB";
+            this.btnInTKB.Size = new System.Drawing.Size(75, 23);
+            this.btnInTKB.TabIndex = 76;
+            this.btnInTKB.Text = "In TKB ";
+            this.btnInTKB.UseVisualStyleBackColor = true;
+            this.btnInTKB.Click += new System.EventHandler(this.btnInTKB_Click);
+            // 
             // frmDSTKB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 359);
+            this.Controls.Add(this.btnInTKB);
             this.Controls.Add(this.btnBoQua);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnSua);
@@ -269,5 +281,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnInTKB;
     }
 }
