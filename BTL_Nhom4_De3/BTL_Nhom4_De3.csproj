@@ -238,5 +238,8 @@
   <ItemGroup>
     <None Include="Resources\hệ thống qly sinh viên %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\526-5262475_memes-cat-hd-png-download.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

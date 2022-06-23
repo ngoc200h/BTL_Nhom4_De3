@@ -289,7 +289,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             string ma;
             //Giới tính
             string gt = dgvSinhVien.CurrentRow.Cells["GTinh"].Value.ToString();
-            if (gt.Trim() == "Nam") //trim() cắt khoản trắng 2 đầu
+            if (gt.Trim() == "Nam")
             {
                 rbtNam.Checked = true;
             }
