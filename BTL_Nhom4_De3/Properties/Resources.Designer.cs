@@ -73,6 +73,16 @@ namespace BTL_Nhom4_De3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _526_5262475_memes_cat_hd_png_download {
+            get {
+                object obj = ResourceManager.GetObject("526-5262475_memes-cat-hd-png-download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hệ_thống_qly_sinh_viên {
             get {
                 object obj = ResourceManager.GetObject("hệ thống qly sinh viên", resourceCulture);
