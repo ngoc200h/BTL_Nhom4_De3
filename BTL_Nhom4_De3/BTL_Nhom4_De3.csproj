@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="CustomParameter.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="frmHDSD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHDSD.Designer.cs">
+      <DependentUpon>frmHDSD.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDSChucVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <EmbeddedResource Include="frmDSTKB.resx">
       <DependentUpon>frmDSTKB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHDSD.resx">
+      <DependentUpon>frmHDSD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +228,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\thisisfine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hệ thống qly sinh viên.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hệ thống qly sinh viên %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
