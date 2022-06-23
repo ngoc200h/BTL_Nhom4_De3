@@ -176,11 +176,12 @@ namespace BTL_Nhom4_De3
             this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
             this.thoatToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.thoatToolStripMenuItem.Text = "Thoát";
-//            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
             // 
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.White;
+            this.pnlContent.BackgroundImage = global::BTL_Nhom4_De3.Properties.Resources.thisisfine;
+            this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlContent.Location = new System.Drawing.Point(0, 24);
