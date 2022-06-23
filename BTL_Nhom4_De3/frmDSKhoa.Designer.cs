@@ -64,7 +64,7 @@ namespace BTL_Nhom4_De3
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(480, 39);
+            this.txtDiaChi.Location = new System.Drawing.Point(457, 36);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(100, 20);
             this.txtDiaChi.TabIndex = 64;
@@ -72,7 +72,7 @@ namespace BTL_Nhom4_De3
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(424, 41);
+            this.label3.Location = new System.Drawing.Point(401, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 63;
@@ -80,14 +80,14 @@ namespace BTL_Nhom4_De3
             // 
             // txtTenKhoa
             // 
-            this.txtTenKhoa.Location = new System.Drawing.Point(288, 74);
+            this.txtTenKhoa.Location = new System.Drawing.Point(265, 71);
             this.txtTenKhoa.Name = "txtTenKhoa";
             this.txtTenKhoa.Size = new System.Drawing.Size(100, 20);
             this.txtTenKhoa.TabIndex = 62;
             // 
             // txtMaKhoa
             // 
-            this.txtMaKhoa.Location = new System.Drawing.Point(288, 39);
+            this.txtMaKhoa.Location = new System.Drawing.Point(265, 36);
             this.txtMaKhoa.Name = "txtMaKhoa";
             this.txtMaKhoa.Size = new System.Drawing.Size(100, 20);
             this.txtMaKhoa.TabIndex = 61;
@@ -95,7 +95,7 @@ namespace BTL_Nhom4_De3
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 77);
+            this.label2.Location = new System.Drawing.Point(193, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 60;
@@ -104,7 +104,7 @@ namespace BTL_Nhom4_De3
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(216, 42);
+            this.label1.Location = new System.Drawing.Point(193, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 59;
@@ -112,7 +112,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(427, 121);
+            this.btnLuu.Location = new System.Drawing.Point(482, 121);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 58;
@@ -122,7 +122,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(309, 121);
+            this.btnSua.Location = new System.Drawing.Point(364, 121);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 57;
@@ -132,7 +132,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(177, 121);
+            this.btnXoa.Location = new System.Drawing.Point(232, 121);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 56;
@@ -142,7 +142,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(58, 121);
+            this.btnThem.Location = new System.Drawing.Point(113, 121);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 55;
@@ -152,7 +152,7 @@ namespace BTL_Nhom4_De3
             // 
             // txtWebsite
             // 
-            this.txtWebsite.Location = new System.Drawing.Point(480, 74);
+            this.txtWebsite.Location = new System.Drawing.Point(457, 71);
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(100, 20);
             this.txtWebsite.TabIndex = 66;
@@ -160,7 +160,7 @@ namespace BTL_Nhom4_De3
             // labell
             // 
             this.labell.AutoSize = true;
-            this.labell.Location = new System.Drawing.Point(424, 76);
+            this.labell.Location = new System.Drawing.Point(401, 73);
             this.labell.Name = "labell";
             this.labell.Size = new System.Drawing.Size(46, 13);
             this.labell.TabIndex = 65;
@@ -168,7 +168,7 @@ namespace BTL_Nhom4_De3
             // 
             // btnBoQua
             // 
-            this.btnBoQua.Location = new System.Drawing.Point(542, 121);
+            this.btnBoQua.Location = new System.Drawing.Point(597, 121);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(75, 23);
             this.btnBoQua.TabIndex = 67;
