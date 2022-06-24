@@ -63,15 +63,9 @@ namespace BTL_Nhom4_De3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
- Toan
-        internal static System.Drawing.Bitmap _1946429 {
-            get {
-                object obj = ResourceManager.GetObject("1946429", resourceCulture);
-
         internal static System.Drawing.Bitmap _ {
             get {
                 object obj = ResourceManager.GetObject("", resourceCulture);
- master
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -79,11 +73,6 @@ namespace BTL_Nhom4_De3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
- Toan
-        internal static System.Drawing.Bitmap _288836171_568177591541693_2417355002403532930_n {
-            get {
-                object obj = ResourceManager.GetObject("288836171_568177591541693_2417355002403532930_n", resourceCulture);
-
         internal static System.Drawing.Bitmap _1 {
             get {
                 object obj = ResourceManager.GetObject("1", resourceCulture);
@@ -127,7 +116,6 @@ namespace BTL_Nhom4_De3.Properties {
         internal static System.Drawing.Bitmap thisisfine1 {
             get {
                 object obj = ResourceManager.GetObject("thisisfine1", resourceCulture);
- master
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -112,21 +112,6 @@ namespace BTL_Nhom4_De3
             AddForm(f);
         }
 
- Toan
-        private void pnlContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblUserName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-
         private void thoatToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             const string message = "Ｄｏ ｙｏｕ ｗａｎｔ ｔｏ ｅｘｉｔ ?";
@@ -141,7 +126,6 @@ namespace BTL_Nhom4_De3
                 this.Close();
 
             }
- master
         }
     }
 }

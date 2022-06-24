@@ -34,15 +34,11 @@ namespace BTL_Nhom4_De3
             LoadDSDiem();
             Database.FillDataToCombo("SELECT MaLop, TenLop FROM Lop", cboMaLop,
                                     "MaLop", "TenLop");
-            /*cboMaLop.SelectedIndex = -1;
+            cboMaLop.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaMon, TenMon FROM Mon", cboMaMon,
                                     "MaMon", "TenMon");
-            cboMaMon.SelectedIndex = -1;*/
-
-
+            cboMaMon.SelectedIndex = -1;
             //cbo Học Kỳ
-            /*Database.FillDataToCombo("SELECT HocKy FROM ThoiKhoaBieu", cboHocKy,
-                                    "MaLop", "TenLop");*/
             string[] hk = { "1", "2"};
             foreach (string x in hk)
             {
@@ -145,7 +141,7 @@ namespace BTL_Nhom4_De3
             if (Database.CheckKey(sql))
             {
                 MessageBox.Show("Mã này đã có, bạn phải nhập mã khác", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaSV.Focus();
                 txtMaSV.Text = "";
                 return;
@@ -161,6 +157,7 @@ namespace BTL_Nhom4_De3
             LoadDSDiem();
             ResetValues();
             btnXoa.Enabled = true;
+
             btnSua.Enabled = true;
             btnBoQua.Enabled = false;
             btnLuu.Enabled = false;
@@ -184,7 +181,7 @@ namespace BTL_Nhom4_De3
             if (tblDiem.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+MessageBoxIcon.Information);
                 return;
             }
             txtMaSV.Text = dgvDiem.CurrentRow.Cells["MaSV"].Value.ToString();
@@ -471,24 +468,6 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             exSheet.Name = "Bảng Điểm";
 
             exApp.Visible = true;
-        }
-
-        int cboMaLopVal;
-        private void cboMaLop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            Int32.TryParse(cboMaLop.SelectedValue.ToString(), out cboMaLopVal);
-            string CboMonTheoLop = "SELECT Mon.MaMon, Mon.TenMon FROM Mon, ThoiKhoaBieu " +
-            "where ThoiKhoaBieu.MaLop = " + cboMaLopVal + "and ThoiKhoaBieu.MaMon = Mon.MaMon";
-            /*Database.FillDataToCombo(CboMonTheoLop, cboMaMon, "MaMon", "Mon.TenMon");*/
-        }
-
-        private void cboHocKy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cboMaMon.Items.Clear();
-            string CboMonTheoLopTheoHK = "SELECT Mon.MaMon, Mon.TenMon FROM Mon, ThoiKhoaBieu where ThoiKhoaBieu.MaLop = " + cboMaLopVal + "and ThoiKhoaBieu.HocKy = '" + cboHocKy.Text + "'and ThoiKhoaBieu.MaMon = Mon.MaMon";
-            /*Database.FillDataToCombo(CboMonTheoLopTheoHK, cboMaMon, "MaMon", "TenMon");*/
-            Database.GetFieldValuesToCombo(cboMaMon, CboMonTheoLopTheoHK);
         }
     }
 }

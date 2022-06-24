@@ -19,7 +19,7 @@ namespace BTL_Nhom4_De3
 
         public static void Connect()
         {
-            connString = "Data Source=localhost;" +
+            connString = "Data Source=NGOC9YO\\SQLEXPRESS;" +
                                      "Initial Catalog = QuanLySinhVien;" +
                                      "Integrated Security=True";
             Conn = new SqlConnection();
@@ -137,19 +137,6 @@ namespace BTL_Nhom4_De3
             reader.Close();
             return ma;
         }
-        public static void GetFieldValuesToCombo(ComboBox cbo, string sql)
-        {
-            SqlCommand cmd = new SqlCommand(sql, Database.Conn);
-            SqlDataReader reader;
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                cbo.Items.Add(reader[1].ToString());
-            }
-            reader.Close();
-        }
-
-        
         public static bool IsDate(string d)
         {
             string[] parts = d.Split('/');
@@ -167,8 +154,6 @@ namespace BTL_Nhom4_De3
             string dt = String.Format("{0}/{1}/{2}", parts[1], parts[0], parts[2]);
             return dt;
         }
-
-
 
     }
 }
