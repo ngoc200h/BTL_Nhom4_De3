@@ -59,12 +59,12 @@ namespace BTL_Nhom4_De3
             this.dgvTKB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTKB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTKB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvTKB.Location = new System.Drawing.Point(0, 180);
+            this.dgvTKB.Location = new System.Drawing.Point(0, 161);
             this.dgvTKB.MultiSelect = false;
             this.dgvTKB.Name = "dgvTKB";
             this.dgvTKB.ReadOnly = true;
             this.dgvTKB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTKB.Size = new System.Drawing.Size(800, 221);
+            this.dgvTKB.Size = new System.Drawing.Size(800, 240);
             this.dgvTKB.TabIndex = 18;
             this.dgvTKB.Click += new System.EventHandler(this.dgvTKB_Click);
             // 
