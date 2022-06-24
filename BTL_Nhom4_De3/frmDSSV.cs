@@ -15,7 +15,6 @@ namespace BTL_Nhom4_De3
     public partial class frmDSSV : Form
     {
         DataTable tblSV;
-        //string gt; //giới tính
 
         public frmDSSV()
         {
@@ -27,37 +26,15 @@ namespace BTL_Nhom4_De3
             txtMaSV.Enabled = false;
             btnLuu.Enabled = false;
             btnBoQua.Enabled = true;
-            cboMaCN.Enabled = true;
             LoadDSSV();
 
             Database.FillDataToCombo("SELECT MaKhoa, TenKhoa FROM Khoa", cboMaKhoa, "MaKhoa", "TenKhoa");
-            cboMaKhoa.SelectedIndex = -1;
             cboMaKhoa_SelectedIndexChanged(null, null);
-            
-            Database.FillDataToCombo("SELECT MaLop, TenLop FROM Lop", cboMaLop, "MaLop", "TenLop");
-            cboMaLop.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaQue, TenQue FROM Que", cboMaQue, "MaQue", "TenQue");
             cboMaQue.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaDToc, TenDToc FROM DanToc", cboMaDT, "MaDToc", "TenDToc");
             cboMaDT.SelectedIndex = -1;
-
-            //Database.FillDataToCombo("SELECT MaCN, TenCN FROM Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
-            //cboMaCN.SelectedIndex = -1;
-            /*
-            if (cboMaCN.Text != "")
-            {
-                Database.FillDataToCombo("SELECT MaCN, TenCN FROM Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
-                cboMaCN.SelectedIndex = -1;
-
-
-                string query = "SELECT `MaKhoa`, `TenKhoa` FROM `Khoa`";
-                cboMaCN.DataSource = Database.LoadDataToTable(query);
-                cboMaCN.DisplayMember = "MaKhoa";
-                cboMaCN.ValueMember = "TenKhoa";
-                cboMaCN_SelectedIndexChanged(null, null);
-            } */
-            Database.FillDataToCombo("SELECT MaCN, TenCN FROM Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
-            cboMaCN.SelectedIndex = -1;
+           
             Database.FillDataToCombo("SELECT MaHeDT, TenHeDT FROM HeDaoTao", cboMaHeDT, "MaHeDT", "TenHeDT");
             cboMaHeDT.SelectedIndex = -1;
             Database.FillDataToCombo("SELECT MaChucVu, TenChucVu FROM ChucVu", cboMaChucVu, "MaChucVu", "TenChucVu");
@@ -204,31 +181,10 @@ namespace BTL_Nhom4_De3
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string sql;
-            if ((cboMaQue.Text == "") 
-                && (cboMaCN.Text == "")
-                && (cboMaKhoa.Text == ""))
-            {
-                MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            sql = "SELECT * FROM Sinh_Vien WHERE 1=1";
-            if (cboMaQue.Text != "")
-                sql = sql + " AND MaQue Like N'%" + cboMaQue.SelectedValue + "%'";
-            if (cboMaCN.Text != "")
-                sql = sql + " AND MaCN Like N'%" + cboMaCN.SelectedValue + "%'";
-            if (cboMaKhoa.Text != "")
-                sql = sql + " AND MaKhoa Like N'%" + cboMaKhoa.SelectedValue + "%'";
-            tblSV = Database.LoadDataToTable(sql);
-            if (tblSV.Rows.Count == 0)
-                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!!", "Thông báo",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else
-                MessageBox.Show("Có " + tblSV.Rows.Count + " bản ghi thỏa mãn điều kiện!!!",
-                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            dgvSinhVien.DataSource = tblSV;
-            ResetValues();
+            this.Hide();
+            frmDSSV_Search f = new frmDSSV_Search();
+            f.ShowDialog();
+            this.Close();
         }
         private void btnBoQua_Click(object sender, EventArgs e)
         {
@@ -327,54 +283,23 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void cboMaKhoa_SelectedIndexChanged(object sender, EventArgs e)
-        {          
-            //Database.FillDataToCombo("SELECT MaKhoa, TenKhoa FROM Khoa", cboMaKhoa, "MaKhoa", "TenKhoa");
-            //cboMaKhoa.SelectedIndex = -1;
-            //Database.FillDataToCombo("select MaCN, TenCN from Chuyen_Nganh", cboMaCN, "MaCN", "TenCN");
-            //cboMaCN.SelectedIndex = -1;
-
-            /*cboMaCN.SelectedValue.ToString();*/
-            //Database.FillDataToCombo("select MaCN, TenCN FROM Chuyen_Nganh WHERE MaKhoa = " + cboMaCN.SelectedValue.ToString(), cboMaCN, "MaCN", "TenCN");
-            //cboMaCN.SelectedIndex = -1;
-            //Database.FillDataToCombo("select MaCN, TenCN from Chuyen_Nganh a join Khoa b on a.MaKhoa=b.MaKhoa where a.MaKhoa=b.MaKhoa", cboMaCN, "MaCN", "TenCN");
-
-            //string ma= cboMaCN.SelectedValue.ToString();
-            /*ma = dgvSinhVien.CurrentRow.Cells["MaCN"].Value.ToString();*/
-            //Database.FillDataToCombo("select MaCN, TenCN from Chuyen_Nganh WHERE MaKhoa = " + ma, cboMaCN, "MaCN", "TenCN");
-            //cboMaCN.SelectedIndex = -1;
-            //cboMaCN.SelectedItem = cboMaKhoa.SelectedValue.ToString();
-
-            //int val;
-            //Int32.TryParse(cboMaKhoa.SelectedValue.ToString(), out val);
-            //string sql = "SELECT MaCN, TenCN, MaKhoa FROM Chuyen_Nganh WHERE MaKhoa = " + val;
-
-            //string ma;
-            //ma = dgvSinhVien.CurrentRow.Cells["MaCN"].Value.ToString();
-            //cboMaCN.Text = Database.GetFieldValues("SELECT TenCN FROM Chuyen_Nganh WHERE MaCN = N'" + ma + "'");
-            //ma = dgvSinhVien.CurrentRow.Cells["MaKhoa"].Value.ToString();
-            //cboMaKhoa.Text = Database.GetFieldValues("SELECT TenKhoa FROM Khoa WHERE MaKhoa = N'" + ma + "'");
-            //dgvSinhVien_Click(null, null);
-
-            //Database.RunSql(sql);
-            //LoadDSSV();
-            //ResetValues();
-            //dataGridView_Products.DataSource = getData(query); */
+        {
+            int val;
+            Int32.TryParse(cboMaKhoa.SelectedValue.ToString(), out val);
+            string CboLopTheoKhoa = "SELECT MaLop, TenLop FROM Lop where MaKhoa = " + val;
+            Database.FillDataToCombo(CboLopTheoKhoa, cboMaLop, "MaLop", "TenLop");
+            string CboCNTheoKhoa = "SELECT MaCN, TenCN FROM Chuyen_Nganh where MaKhoa = " + val;
+            Database.FillDataToCombo(CboCNTheoKhoa, cboMaCN, "MaCN", "TenCN");
         }
 
         private void cboMaCN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //int val;
-            //Int32.TryParse(cboMaCN.SelectedValue.ToString(), out val);
-            //string query = "SELECT `ID_PRO`, `PRO_NAME`, `QTE_IN_STOCK`, `PRICE`, `ID_CAT` FROM `products` WHERE `ID_CAT` = " + val;
-            //dataGridView_Products.DataSource = getData(query);
-            //int val;
-            //Int32.TryParse(cboMaKhoa.SelectedValue.ToString(), out val);
-            //string sql = "SELECT MaCN, TenCN, MaKhoa FROM Chuyen_Nganh WHERE MaKhoa = " + val;
+
         }
 
         private void cboMaKhoa_TextChanged(object sender, EventArgs e)
         {
-            string str;
+            /*string str;
             if (cboMaKhoa.Text == "")
             {
                 cboMaLop.Text = "";
@@ -385,7 +310,17 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             str = "Select TenCN from Chuyen_Nganh where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
             cboMaCN.Text = Database.GetFieldValues(str);
             str = "Select TenLop from Lop where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
-            cboMaLop.Text = Database.GetFieldValues(str);
+            cboMaLop.Text = Database.GetFieldValues(str);*/
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

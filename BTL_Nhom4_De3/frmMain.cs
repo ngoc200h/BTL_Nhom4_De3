@@ -114,5 +114,20 @@ namespace BTL_Nhom4_De3
             frmDSHeDT f = new frmDSHeDT();
             AddForm(f);
         }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblUserName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

@@ -63,20 +63,23 @@ namespace BTL_Nhom4_De3
             this.dgvDiem.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvDiem.Location = new System.Drawing.Point(0, 186);
+            this.dgvDiem.Location = new System.Drawing.Point(0, 229);
+            this.dgvDiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDiem.MultiSelect = false;
             this.dgvDiem.Name = "dgvDiem";
             this.dgvDiem.ReadOnly = true;
+            this.dgvDiem.RowHeadersWidth = 51;
             this.dgvDiem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDiem.Size = new System.Drawing.Size(848, 253);
+            this.dgvDiem.Size = new System.Drawing.Size(1131, 311);
             this.dgvDiem.TabIndex = 6;
             this.dgvDiem.Click += new System.EventHandler(this.dgvDiem_Click);
             // 
             // btnBoQua
             // 
-            this.btnBoQua.Location = new System.Drawing.Point(722, 105);
+            this.btnBoQua.Location = new System.Drawing.Point(963, 129);
+            this.btnBoQua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBoQua.Name = "btnBoQua";
-            this.btnBoQua.Size = new System.Drawing.Size(75, 23);
+            this.btnBoQua.Size = new System.Drawing.Size(100, 28);
             this.btnBoQua.TabIndex = 56;
             this.btnBoQua.Text = "Bỏ Qua";
             this.btnBoQua.UseVisualStyleBackColor = true;
@@ -85,25 +88,29 @@ namespace BTL_Nhom4_De3
             // cboMaLop
             // 
             this.cboMaLop.FormattingEnabled = true;
-            this.cboMaLop.Location = new System.Drawing.Point(108, 32);
+            this.cboMaLop.Location = new System.Drawing.Point(144, 39);
+            this.cboMaLop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaLop.Name = "cboMaLop";
-            this.cboMaLop.Size = new System.Drawing.Size(121, 21);
+            this.cboMaLop.Size = new System.Drawing.Size(160, 24);
             this.cboMaLop.TabIndex = 55;
+            this.cboMaLop.SelectedIndexChanged += new System.EventHandler(this.cboMaLop_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 35);
+            this.label3.Location = new System.Drawing.Point(68, 43);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 54;
             this.label3.Text = "Mã Lớp";
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(561, 147);
+            this.btnLuu.Location = new System.Drawing.Point(748, 181);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.Size = new System.Drawing.Size(100, 28);
             this.btnLuu.TabIndex = 49;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -111,9 +118,10 @@ namespace BTL_Nhom4_De3
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(722, 76);
+            this.btnSua.Location = new System.Drawing.Point(963, 94);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.Size = new System.Drawing.Size(100, 28);
             this.btnSua.TabIndex = 48;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -121,9 +129,10 @@ namespace BTL_Nhom4_De3
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(722, 47);
+            this.btnXoa.Location = new System.Drawing.Point(963, 58);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Size = new System.Drawing.Size(100, 28);
             this.btnXoa.TabIndex = 47;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -131,9 +140,10 @@ namespace BTL_Nhom4_De3
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(525, 46);
+            this.btnTimKiem.Location = new System.Drawing.Point(700, 57);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.Size = new System.Drawing.Size(100, 28);
             this.btnTimKiem.TabIndex = 46;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
@@ -142,51 +152,58 @@ namespace BTL_Nhom4_De3
             // cboMaMon
             // 
             this.cboMaMon.FormattingEnabled = true;
-            this.cboMaMon.Location = new System.Drawing.Point(370, 32);
+            this.cboMaMon.Location = new System.Drawing.Point(144, 83);
+            this.cboMaMon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaMon.Name = "cboMaMon";
-            this.cboMaMon.Size = new System.Drawing.Size(121, 21);
+            this.cboMaMon.Size = new System.Drawing.Size(160, 24);
             this.cboMaMon.TabIndex = 58;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(313, 35);
+            this.label4.Location = new System.Drawing.Point(68, 87);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(58, 17);
             this.label4.TabIndex = 57;
             this.label4.Text = "Mã Môn";
             // 
             // cboHocKy
             // 
             this.cboHocKy.FormattingEnabled = true;
-            this.cboHocKy.Location = new System.Drawing.Point(108, 68);
+            this.cboHocKy.Location = new System.Drawing.Point(493, 36);
+            this.cboHocKy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboHocKy.Name = "cboHocKy";
-            this.cboHocKy.Size = new System.Drawing.Size(121, 21);
+            this.cboHocKy.Size = new System.Drawing.Size(160, 24);
             this.cboHocKy.TabIndex = 60;
+            this.cboHocKy.SelectedIndexChanged += new System.EventHandler(this.cboHocKy_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(51, 71);
+            this.label5.Location = new System.Drawing.Point(417, 39);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(53, 17);
             this.label5.TabIndex = 59;
             this.label5.Text = "Học Kỳ";
             // 
             // cboLanThi
             // 
             this.cboLanThi.FormattingEnabled = true;
-            this.cboLanThi.Location = new System.Drawing.Point(370, 68);
+            this.cboLanThi.Location = new System.Drawing.Point(493, 84);
+            this.cboLanThi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboLanThi.Name = "cboLanThi";
-            this.cboLanThi.Size = new System.Drawing.Size(121, 21);
+            this.cboLanThi.Size = new System.Drawing.Size(160, 24);
             this.cboLanThi.TabIndex = 62;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(313, 71);
+            this.label6.Location = new System.Drawing.Point(417, 87);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.Size = new System.Drawing.Size(56, 17);
             this.label6.TabIndex = 61;
             this.label6.Text = "Lần Thi";
             // 
@@ -201,18 +218,21 @@ namespace BTL_Nhom4_De3
             this.groupBox1.Controls.Add(this.cboMaLop);
             this.groupBox1.Controls.Add(this.cboMaMon);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(36, 30);
+            this.groupBox1.Location = new System.Drawing.Point(48, 37);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(630, 111);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(840, 137);
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Điền thông tin để  nhập điểm";
             // 
             // btnInDSDiem
             // 
-            this.btnInDSDiem.Location = new System.Drawing.Point(722, 147);
+            this.btnInDSDiem.Location = new System.Drawing.Point(963, 181);
+            this.btnInDSDiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInDSDiem.Name = "btnInDSDiem";
-            this.btnInDSDiem.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSDiem.Size = new System.Drawing.Size(100, 28);
             this.btnInDSDiem.TabIndex = 68;
             this.btnInDSDiem.Text = "In DS Điểm";
             this.btnInDSDiem.UseVisualStyleBackColor = true;
@@ -221,40 +241,45 @@ namespace BTL_Nhom4_De3
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 150);
+            this.label1.Location = new System.Drawing.Point(116, 185);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 64;
             this.label1.Text = "Mã Sinh Viên";
             // 
             // txtMaSV
             // 
-            this.txtMaSV.Location = new System.Drawing.Point(163, 147);
+            this.txtMaSV.Location = new System.Drawing.Point(217, 181);
+            this.txtMaSV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMaSV.Name = "txtMaSV";
-            this.txtMaSV.Size = new System.Drawing.Size(102, 20);
+            this.txtMaSV.Size = new System.Drawing.Size(135, 22);
             this.txtMaSV.TabIndex = 65;
             // 
             // txtDiem
             // 
-            this.txtDiem.Location = new System.Drawing.Point(482, 147);
+            this.txtDiem.Location = new System.Drawing.Point(643, 181);
+            this.txtDiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDiem.Name = "txtDiem";
-            this.txtDiem.Size = new System.Drawing.Size(45, 20);
+            this.txtDiem.Size = new System.Drawing.Size(59, 22);
             this.txtDiem.TabIndex = 67;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(445, 150);
+            this.label2.Location = new System.Drawing.Point(593, 185);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(40, 17);
             this.label2.TabIndex = 66;
             this.label2.Text = "Điểm";
             // 
             // btnInBangDiem
             // 
-            this.btnInBangDiem.Location = new System.Drawing.Point(271, 147);
+            this.btnInBangDiem.Location = new System.Drawing.Point(361, 181);
+            this.btnInBangDiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInBangDiem.Name = "btnInBangDiem";
-            this.btnInBangDiem.Size = new System.Drawing.Size(136, 23);
+            this.btnInBangDiem.Size = new System.Drawing.Size(181, 28);
             this.btnInBangDiem.TabIndex = 69;
             this.btnInBangDiem.Text = "In Bảng Điểm theo MSV";
             this.btnInBangDiem.UseVisualStyleBackColor = true;
@@ -263,17 +288,18 @@ namespace BTL_Nhom4_De3
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(160, 170);
+            this.label7.Location = new System.Drawing.Point(213, 209);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.Size = new System.Drawing.Size(118, 17);
             this.label7.TabIndex = 70;
             this.label7.Text = "Cú pháp: SV + số";
             // 
             // frmDSDiem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 439);
+            this.ClientSize = new System.Drawing.Size(1131, 540);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnInBangDiem);
             this.Controls.Add(this.btnInDSDiem);
@@ -287,6 +313,7 @@ namespace BTL_Nhom4_De3
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.dgvDiem);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmDSDiem";
             this.Text = "Danh Sách Điểm";
             this.Load += new System.EventHandler(this.frmDSDiem_Load);
