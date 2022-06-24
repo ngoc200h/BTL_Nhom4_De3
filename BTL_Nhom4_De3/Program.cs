@@ -15,8 +15,8 @@ namespace BTL_Nhom4_De3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmDSSV());
-            Application.Run(new frmMain());
+
+            Application.Run(new frmLogin());
         }
     }
 }
