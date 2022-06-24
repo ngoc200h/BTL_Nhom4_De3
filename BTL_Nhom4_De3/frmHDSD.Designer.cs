@@ -29,6 +29,7 @@ namespace BTL_Nhom4_De3
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHDSD));
             this.cboChung = new System.Windows.Forms.ComboBox();
             this.cboSV = new System.Windows.Forms.ComboBox();
             this.cboQA = new System.Windows.Forms.ComboBox();
@@ -95,7 +96,7 @@ namespace BTL_Nhom4_De3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BTL_Nhom4_De3.Properties.Resources.hệ_thống_qly_sinh_viên__1_;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtQA);
