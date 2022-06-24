@@ -256,7 +256,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             exRange.Range["D1:D1"].MergeCells = true;
             exRange.Range["D1:D1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["D1:D1"].Value = "Nhóm 2";
+            exRange.Range["D1:D1"].Value = "Nhóm 4";
 
             exRange.Range["F1:H1"].MergeCells = true;
             exRange.Range["F1:H1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -380,7 +380,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             exRange.Range["D1:D1"].MergeCells = true;
             exRange.Range["D1:D1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["D1:D1"].Value = "Nhóm 2";
+            exRange.Range["D1:D1"].Value = "Nhóm 4";
 
             exRange.Range["F1:H1"].MergeCells = true;
             exRange.Range["F1:H1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;

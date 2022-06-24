@@ -35,7 +35,6 @@ namespace BTL_Nhom4_De3
             this.btnBoQua = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.cboMaChucVu = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cboMaHeDT = new System.Windows.Forms.ComboBox();
@@ -53,12 +52,16 @@ namespace BTL_Nhom4_De3
             this.label13 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
+ Toan
             this.label8 = new System.Windows.Forms.Label();
             this.cboMaCN = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cboMaKhoa = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboMaQue = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnThem = new System.Windows.Forms.Button();
+ master
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,6 +136,7 @@ namespace BTL_Nhom4_De3
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+ Toan
             // btnThem
             // 
             this.btnThem.Location = new System.Drawing.Point(77, 226);
@@ -144,6 +148,8 @@ namespace BTL_Nhom4_De3
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+
+ master
             // cboMaChucVu
             // 
             this.cboMaChucVu.FormattingEnabled = true;
@@ -315,6 +321,7 @@ namespace BTL_Nhom4_De3
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+ Toan
             // label8
             // 
             this.label8.AutoSize = true;
@@ -378,6 +385,32 @@ namespace BTL_Nhom4_De3
             this.cboMaQue.Name = "cboMaQue";
             this.cboMaQue.Size = new System.Drawing.Size(160, 24);
             this.cboMaQue.TabIndex = 93;
+
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cboMaQue);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cboMaKhoa);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cboMaCN);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Location = new System.Drawing.Point(562, 33);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(263, 134);
+            this.groupBox1.TabIndex = 104;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Lựa chọn ít nhất 1 thông tin để tìm kiếm";
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(58, 184);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 67;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+ master
             // 
             // frmDSSV
             // 

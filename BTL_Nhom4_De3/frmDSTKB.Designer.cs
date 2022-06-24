@@ -48,6 +48,7 @@ namespace BTL_Nhom4_De3
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnInTKB = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKB)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,12 +59,12 @@ namespace BTL_Nhom4_De3
             this.dgvTKB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTKB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTKB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvTKB.Location = new System.Drawing.Point(0, 158);
+            this.dgvTKB.Location = new System.Drawing.Point(0, 161);
             this.dgvTKB.MultiSelect = false;
             this.dgvTKB.Name = "dgvTKB";
             this.dgvTKB.ReadOnly = true;
             this.dgvTKB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTKB.Size = new System.Drawing.Size(800, 201);
+            this.dgvTKB.Size = new System.Drawing.Size(800, 240);
             this.dgvTKB.TabIndex = 18;
             this.dgvTKB.Click += new System.EventHandler(this.dgvTKB_Click);
             // 
@@ -229,11 +230,21 @@ namespace BTL_Nhom4_De3
             this.btnInTKB.UseVisualStyleBackColor = true;
             this.btnInTKB.Click += new System.EventHandler(this.btnInTKB_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(521, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 13);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "Theo Mã Lớp và Học Kỳ";
+            // 
             // frmDSTKB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 359);
+            this.ClientSize = new System.Drawing.Size(800, 401);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnInTKB);
             this.Controls.Add(this.btnBoQua);
             this.Controls.Add(this.btnLuu);
@@ -282,5 +293,6 @@ namespace BTL_Nhom4_De3
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnInTKB;
+        private System.Windows.Forms.Label label2;
     }
 }
