@@ -29,6 +29,7 @@ namespace BTL_Nhom4_De3
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.danhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sinhVienToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -190,7 +191,7 @@ namespace BTL_Nhom4_De3
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.White;
-            this.pnlContent.BackgroundImage = global::BTL_Nhom4_De3.Properties.Resources._1;
+            this.pnlContent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlContent.BackgroundImage")));
             this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
