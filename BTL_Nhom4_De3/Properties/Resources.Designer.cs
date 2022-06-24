@@ -63,6 +63,16 @@ namespace BTL_Nhom4_De3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _ {
+            get {
+                object obj = ResourceManager.GetObject("", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1 {
             get {
                 object obj = ResourceManager.GetObject("1", resourceCulture);
@@ -103,9 +113,9 @@ namespace BTL_Nhom4_De3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap thisisfine {
+        internal static System.Drawing.Bitmap thisisfine1 {
             get {
-                object obj = ResourceManager.GetObject("thisisfine", resourceCulture);
+                object obj = ResourceManager.GetObject("thisisfine1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
