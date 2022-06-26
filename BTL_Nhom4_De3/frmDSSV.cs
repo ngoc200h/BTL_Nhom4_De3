@@ -374,18 +374,18 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         private void cboMaKhoa_TextChanged(object sender, EventArgs e)
         {
-            string str;
-            if (cboMaKhoa.Text == "")
-            {
-                cboMaLop.Text = "";
-                cboMaCN.Text = "";
-            }
-            //Khi kich chon Ma Khoa thi ten lớp, tên chuyên ngành chỉ hiện những dữ liệu thuộc khoa đó
-            //Hiện tại khi chọn mã khoa thì chỉ hiện 1 trong số các dữ liệu lên combobox thôi :((((
-            str = "Select TenCN from Chuyen_Nganh where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
-            cboMaCN.Text = Database.GetFieldValues(str);
-            str = "Select TenLop from Lop where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
-            cboMaLop.Text = Database.GetFieldValues(str);
+            //string str;
+            //if (cboMaKhoa.Text == "")
+            //{
+            //    cboMaLop.Text = "";
+            //    cboMaCN.Text = "";
+            //}
+            ////Khi kich chon Ma Khoa thi ten lớp, tên chuyên ngành chỉ hiện những dữ liệu thuộc khoa đó
+            ////Hiện tại khi chọn mã khoa thì chỉ hiện 1 trong số các dữ liệu lên combobox thôi :((((
+            //str = "Select TenCN from Chuyen_Nganh where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
+            //cboMaCN.Text = Database.GetFieldValues(str);
+            //str = "Select TenLop from Lop where MaKhoa = N'" + cboMaKhoa.SelectedValue + "'";
+            //cboMaLop.Text = Database.GetFieldValues(str);
 
         }
     }
