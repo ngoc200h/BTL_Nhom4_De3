@@ -20,7 +20,7 @@ namespace BTL_Nhom4_De3
         public static void Connect()
         {
             connString = "Data Source=NGOC9YO\\SQLEXPRESS;" +
-                                     "Initial Catalog = QuanLySinhVien;" +
+                                     "Initial Catalog = QuanLySinhVienBTL;" +
                                      "Integrated Security=True";
             Conn = new SqlConnection();
             Conn.ConnectionString = connString;
